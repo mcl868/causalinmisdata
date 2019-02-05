@@ -7,7 +7,7 @@ Maintainer: Thomas Maltesen <mcl868@alumni.ku.dk>
 Description: packagedevelop.
 Imports: HelpPackage
 Remotes: mcl868/HelpPackage
-Depends: HelpPackage
+Depends: HelpPackage gtools
 URL: https://github.com/mcl868/packagedevelop.git
 License: GPL (>= 3)
 Encoding: UTF-8
