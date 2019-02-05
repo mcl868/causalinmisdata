@@ -42,7 +42,8 @@ prob.of.missing(object, regression, list.out = TRUE, completecase = FALSE, regLi
 %% ...
 }
 \references{
-put references to the literature/web site here
+Tsiatis, Anastasios A., A. A. (2006). Semiparametric theory and missing data. Springer series in statistics.
+Springer.
 }
 \author{
 Thomas Maltesen
@@ -57,6 +58,7 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+Look at \code{\link{missing.pattern}}.
 
 regList<-list()
 regList[[1]]<-"L0"

@@ -36,7 +36,8 @@ missing.pattern(response, covariates, data, pattern, ...)
 %% ...
 }
 \references{
-put references to the literature/web site here
+Tsiatis, Anastasios A., A. A. (2006). Semiparametric theory and missing data. Springer series in statistics.
+Springer.
 }
 \author{
 Thomas Maltesen
