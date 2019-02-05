@@ -1,0 +1,15 @@
+Package: packagedevelop
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Thomas Maltesen
+Maintainer: Thomas Maltesen <mcl868@alumni.ku.dk>
+Description: packagedevelop.
+Imports: HelpPackage
+Remotes: mcl868/HelpPackage
+Depends: HelpPackage
+URL: https://github.com/mcl868/packagedevelop.git
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends: gtools
+LazyData: true
