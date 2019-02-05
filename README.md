@@ -3,9 +3,11 @@
 install.packages("devtools")
 devtools::install_github('mcl868/packagedevelop')
 ```
+## This package contains following functions
+- [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
+- [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 
-
-to see bla
+This package require addtional functions see 
 [HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md) for further information
 
 
@@ -18,7 +20,6 @@ g.aipw.dicho(mmodels,
              pmodels,
              data,...)
 ```
-
 
 ### Data
 ```markdown
