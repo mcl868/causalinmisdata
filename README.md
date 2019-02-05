@@ -4,6 +4,11 @@ install.packages("devtools")
 devtools::install_github('mcl868/packagedevelop')
 ```
 
+
+to see bla
+[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md) for further information
+
+
 ## DAG
 <img src="https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG" width="480">
 
