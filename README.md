@@ -133,17 +133,17 @@ for(iiii in 1:loop){
 
 regList<-list()
 regList[[1]]<-"L0"
-regList[[2]]<-"L0 + X0"
-regList[[3]]<-"L0 + X0 + L1"
-regList[[4]]<-"L0 + X0 + L1 + X1"
-regList[[5]]<-"L0 + X0 + L1 + X1 + L2"
-regList[[6]]<-"L0 + X0 + L1 + X1 + L2 + X2 + X1*X2"
+regList[[2]]<-"L0 + A0"
+regList[[3]]<-"L0 + A0 + L1"
+regList[[4]]<-"L0 + A0 + L1 + A1"
+regList[[5]]<-"L0 + A0 + L1 + A1 + L2"
+regList[[6]]<-"L0 + A0 + L1 + A1 + L2 + A2 + A1*A2"
 
 DataSetCount<-list()
 CountList<-Coef1List<-Coef2List<-Coef3List<-Coef4List<-Coef5List<-Coef6List<-list()
 for(iiii in 1:loop){
   misdata<-missing.pattern(response = "Y",
-                           covariates = c("L0","X0","L1","X1","L2","X2"),
+                           covariates = c("L0","A0","L1","A1","L2","A2"),
                            data = DataSetListNA[[iiii]],
                            pattern = "Monotone")
 
@@ -165,19 +165,19 @@ round(listMean(Coef1List),1)
 (Intercept)          L0 
        -2.2        -0.5 
 round(listMean(Coef2List),1)
-(Intercept)          L0          X0 
+(Intercept)          L0          A0 
        -2.3         0.2        -0.2 
 round(listMean(Coef3List),1)
-(Intercept)          L0          X0          L1 
+(Intercept)          L0          A0          L1 
        -2.4        -0.3         0.2        -0.2 
 round(listMean(Coef4List),1)
-(Intercept)          L0          X0          L1          X1 
+(Intercept)          L0          A0          L1          A1 
        -2.3         0.4         0.2         0.8         0.5 
 round(listMean(Coef5List),1)
-(Intercept)          L0          X0          L1          X1          L2 
+(Intercept)          L0          A0          L1          A1          L2 
        -2.2         0.4         0.2         0.7         0.5        -0.3 
 round(listMean(Coef6List),1)
-(Intercept)          L0          X0          L1          X1          L2          X2       X1:X2 
+(Intercept)          L0          A0          L1          A1          L2          A2       A1:A2 
        -2.0         0.4         0.2         0.7        -0.5        -0.3         1.2        -1.4 
 
 ```
@@ -201,7 +201,7 @@ for(iiii in 1:loop){
   estimationMis[[iiii]]<-g.aipwcc.dicho(mmodels=c(model1,model2,model3),
                                         pmodels=c(pi1,pi2,pi3),
                                         data=DataSetList[[iiii]],
-                                        covariates=c("L0","X0","L1","X1","L2","X2"),
+                                        covariates=c("L0","A0","L1","A1","L2","A2"),
                                         pattern = "Monotone",
                                         regList=regList)}
 ```
