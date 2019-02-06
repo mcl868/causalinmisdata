@@ -2,11 +2,19 @@ print.aipwgcompdicho<-function(x, digits=3, ...){
   object<-x
   rm(x)
   if(inherits(object,"aipwgcompdicho")){
-    
-    Eobjects<-paste0("object$",names(object)[!names(object) %in% c("N","NCC","exposure")])
-    Est<-matrix(round(sapply(1:length(Eobjects),function(i)eval(parse(text=Eobjects[i]))),digits),nrow=1)
-    colnames(Est)<-paste("  ",names(object)[!names(object) %in% c("N","NCC","exposure")])
-    rownames(Est)<-"Est"
+
+    cat("m/mu-models:\n")
+    for(iii_ in 1:length(object$mmodels)){print(object$mmodels[[iii_]])}
+    cat("\n")
+    cat("pi-models:\n")
+    for(iii_ in 1:length(object$pmodels)){print(object$pmodels[[iii_]])}
+
+    elements<-c("N","NCC","exposure","mmodels","pmodels")
+
+    Eobjects<-paste0("object$",names(object)[!names(object) %in% elements])
+    Est<-matrix(round(sapply(1:length(Eobjects),function(i)eval(parse(text=Eobjects[i]))),digits),ncol=1)
+    rownames(Est)<-paste("  ",names(object)[!names(object) %in% elements])
+    colnames(Est)<-"Est"
     cat("\n")
     print(Est)
     cat("\n")
