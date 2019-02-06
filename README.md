@@ -5,10 +5,6 @@ To install the package from GitHub:
 install.packages("devtools")
 devtools::install_github('mcl868/packagedevelop')
 ```
-## This package contains following functions
-- [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#g.aipw.dicho)
-- [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
-- [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 
 This package require addtional packages 
 [HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md)
@@ -16,10 +12,10 @@ and
 [gtools](https://cran.r-project.org/web/packages/gtools/index.html)
 for further information
 
-
-
-## DAG
-<img src="https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG" width="480">
+## This package contains following functions
+- [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwdicho)
+- [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
+- [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 
 ## g.aipw.dicho
 Augmeneted inverse probability weighted function for binary exposures and continuous outcomes
@@ -30,6 +26,9 @@ g.aipw.dicho(mmodels,
 ```
 
 ## Example
+### DAG
+<img src="https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG" width="480">
+
 Assume to 3 exposures
 
 #### Data
@@ -54,10 +53,7 @@ for(iiii in 1:loop){
 
   DataSetList[[iiii]]<-data.frame(L0, L1, L2, X0, X1, X2, Y);rm(list=c("L0","L1","L2","X0","X1","X2","Y"))}
 rm("iiii")
-```
 
-### Model
-```markdown
 pi1 <- X0 ~ L0
 pi2 <- X1 ~ L0 + X0 + L1 + L1*X0
 pi3 <- X2 ~ L0 + X0 + L1 + X1 + L2 + L1*X1
@@ -79,16 +75,6 @@ missing.pattern(response,
                 covariates, 
                 data, 
                 pattern, ...)
-```
-
-### prob.of.missing
-```markdown
-prob.of.missing(object,
-                regression,
-                list.out = TRUE,
-                completecase = FALSE,
-                regList,
-                order=NULL, ...)
 ```
 
 ### Missing data
@@ -175,6 +161,19 @@ round(listMean(Coef6List),1)
        -2.0         0.4         0.2         0.7        -0.5        -0.3         1.2        -1.4 
 
 ```
+
+
+### prob.of.missing
+```markdown
+prob.of.missing(object,
+                regression,
+                list.out = TRUE,
+                completecase = FALSE,
+                regList,
+                order=NULL, ...)
+```
+
+
 
 
 ## g.aipwcc.dicho
