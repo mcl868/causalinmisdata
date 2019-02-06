@@ -1,27 +1,38 @@
 # packagedevelop
+
+To install the package from GitHub:
 ```markdown
 install.packages("devtools")
 devtools::install_github('mcl868/packagedevelop')
 ```
 ## This package contains following functions
+- [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#g.aipw.dicho)
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 
-This package require addtional functions see 
-[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md) for further information
+This package require addtional packages 
+[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md)
+and
+[gtools](https://cran.r-project.org/web/packages/gtools/index.html)
+for further information
+
 
 
 ## DAG
 <img src="https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG" width="480">
 
-## Binary exposure
+## g.aipw.dicho
+Augmeneted inverse probability weighted function for binary exposures and continuous outcomes
 ```markdown
 g.aipw.dicho(mmodels,
              pmodels,
              data,...)
 ```
 
-### Data
+## Example
+Assume to 3 exposures
+
+#### Data
 ```markdown
 p<-function(x)exp(x)/(1+exp(x))
 
@@ -163,8 +174,23 @@ round(listMean(Coef6List),1)
 (Intercept)          L0          X0          L1          X1          L2          X2       X1:X2 
        -2.0         0.4         0.2         0.7        -0.5        -0.3         1.2        -1.4 
 
-
 ```
+
+
+## g.aipwcc.dicho
+```markdown
+g.aipwcc.dicho(mmodels,
+               pmodels,
+               covariates,
+               pattern,
+               regList,
+               data,
+               aug = NULL,...)}
+```
+
+
+
+
 
 ### Missing estimation
 ```markdown
