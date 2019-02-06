@@ -27,7 +27,11 @@ g.aipw.dicho(mmodels,
 
 ## Example
 ### DAG
-<img src="https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG" width="480">
+<img src="
+
+https://user-images.githubusercontent.com/20704019/52067565-209ee480-257b-11e9-9461-d8dd80c3863f.PNG
+
+" width="480">
 
 Assume to 3 exposures
 
