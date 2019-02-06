@@ -5,6 +5,8 @@ To install the package from GitHub:
 install.packages("devtools")
 devtools::install_github('mcl868/packagedevelop')
 ```
+If the package *devtools* is already installed then it is **not** nessecary to use the command
+*install.packages("devtools")*.
 
 This package require addtional packages 
 [HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md)
@@ -37,6 +39,7 @@ g.aipw.dicho(mmodels,
 - *bla*
 - *bla*
 
+For further information about the function write *?g.aipw.dicho* in r.
 
 ## Example
 ### DAG
