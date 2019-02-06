@@ -27,6 +27,17 @@ g.aipw.dicho(mmodels,
              data,...)
 ```
 
+**Input**
+- *mmodels*: models bla
+- *pmodels*: models bla
+- *data*: data bla
+
+**Output**
+- *bla*
+- *bla*
+- *bla*
+
+
 ## Example
 ### DAG
 <img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
@@ -82,6 +93,17 @@ missing.pattern(response,
                 pattern, ...)
 ```
 
+**Input**
+- *response*: models bla
+- *covariates*: models bla
+- *data*: data bla
+- *pattern*: Mono two
+
+**Output**
+- *bla*
+- *bla*
+- *bla*
+
 ### Missing data
 ```markdown
 DataSetListNA<-list()
@@ -122,6 +144,18 @@ prob.of.missing(object,
                 regList,
                 order=NULL, ...)
 ```
+**Input**
+- *object*: models bla
+- *regression*: models bla
+- *list.out*: data bla
+- *completecase*: 
+- *regList*: 
+- *order*: 
+
+**Output**
+- *bla*
+- *bla*
+- *bla*
 
 #### bla
 ```markdown  
@@ -192,7 +226,19 @@ g.aipwcc.dicho(mmodels,
                data,
                aug = NULL,...)}
 ```
+**Input**
+- *mmodels*: models bla
+- *pmodels*: models bla
+- *covariates*: data bla
+- *pattern*: bla
+- *regList*: bla
+- *data*: bla
+- *aug*: bla
 
+**Output**
+- *bla*
+- *bla*
+- *bla*
 
 ### Missing estimation
 ```markdown
