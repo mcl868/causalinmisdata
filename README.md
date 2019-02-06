@@ -16,6 +16,8 @@ for further information
 - [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwdicho)
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
+- [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
+
 
 ## g.aipw.dicho
 Augmeneted inverse probability weighted function for binary exposures and continuous outcomes
@@ -53,7 +55,10 @@ for(iiii in 1:loop){
 
   DataSetList[[iiii]]<-data.frame(L0, L1, L2, A0, A1, A2, Y);rm(list=c("L0","L1","L2","A0","A1","A2","Y"))}
 rm("iiii")
+```
 
+#### bla
+```markdown
 pi1 <- A0 ~ L0
 pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
 pi3 <- A2 ~ L0 + A0 + L1 + A1 + L2 + L1*A1
@@ -106,16 +111,26 @@ for(iiii in 1:loop){
   updata6[,c("Y")]<-NA
 
   DataSetListNA[[iiii]]<-rbind(updata1,updata2,updata3,updata4,updata5,updata6,updata7)[sample(1:NN,NN),]}
-  
+```
+
+### prob.of.missing
+```markdown
+prob.of.missing(object,
+                regression,
+                list.out = TRUE,
+                completecase = FALSE,
+                regList,
+                order=NULL, ...)
+```
+
+#### bla
+```markdown  
 estimationNA<-list()
 for(iiii in 1:loop){
   estimationNA[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3), 
                                      pmodels=c(pi1,pi2,pi3), 
                                      data=DataSetListNA[[iiii]])}
-```
 
-### Missing regression
-```markdown
 regList<-list()
 regList[[1]]<-"L0"
 regList[[2]]<-"L0 + X0"
@@ -167,20 +182,6 @@ round(listMean(Coef6List),1)
 
 ```
 
-
-### prob.of.missing
-```markdown
-prob.of.missing(object,
-                regression,
-                list.out = TRUE,
-                completecase = FALSE,
-                regList,
-                order=NULL, ...)
-```
-
-
-
-
 ## g.aipwcc.dicho
 ```markdown
 g.aipwcc.dicho(mmodels,
@@ -191,9 +192,6 @@ g.aipwcc.dicho(mmodels,
                data,
                aug = NULL,...)}
 ```
-
-
-
 
 
 ### Missing estimation
