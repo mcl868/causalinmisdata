@@ -1,9 +1,9 @@
-# packagedevelop
+# causalinmisdata
 
 To install the package from GitHub:
 ```markdown
 install.packages("devtools")
-devtools::install_github('mcl868/packagedevelop')
+devtools::install_github("mcl868/causalinmisdata")
 ```
 If the package *devtools* is already installed then it is **not** nessecary to use the command
 *install.packages("devtools")*.
