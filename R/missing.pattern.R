@@ -7,7 +7,7 @@ missing.pattern<-function(response, covariates, data, pattern, ...){
   dataPre<-data[, variables]
   dataPre$C<-rowSums(1*!is.na(dataPre))
   dataPre$C[dataPre$C==lengthVar]<-Inf
-  data1<-dataPrere[!dataPre$C==0,]
+  data1<-dataPre[!dataPre$C==0,]
 
   if(!missing(pattern)){
     if(tolower(pattern) %in% c("twolevel", "monotone")){
