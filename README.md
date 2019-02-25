@@ -30,14 +30,16 @@ g.aipw.dicho(mmodels,
 ```
 
 **Input**
-- *mmodels*: models bla
-- *pmodels*: models bla
-- *data*: data bla
+- *mmodels*: Models corresponding to response. See example.
+- *pmodels*: Models for the probability of receive a certain treatment. See example.
+- *data*: Data.
 
 **Output**
-- *bla*
-- *bla*
-- *bla*
+- *mmodels*: The mmodels that have been used for modeling data.
+- *pmodels*: The pmodels that have been used for modeling data.
+- *N*: The sample size of data.
+- *NCC*: The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
+- *exposure*: The exposure of the analysis.
 
 For further information about the function write *?g.aipw.dicho* in r.
 
@@ -103,9 +105,12 @@ missing.pattern(response,
 - *pattern*: Mono two
 
 **Output**
-- *bla*
-- *bla*
-- *bla*
+- *data*:
+- *covariatesObj*: 
+- *pattern*: Monotone Twolevel
+- *responseObj*:
+- *count*:
+- *percent*:
 
 ### Missing data
 ```markdown
@@ -156,9 +161,10 @@ prob.of.missing(object,
 - *order*: 
 
 **Output**
-- *bla*
-- *bla*
-- *bla*
+- *bla* if bla
+- *bla* if bla
+- *bla* if bla
+- *bla* if bla
 
 #### bla
 ```markdown  
