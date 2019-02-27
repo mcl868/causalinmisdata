@@ -36,7 +36,7 @@ g.aipw.dicho.formula<-function(mmodels, pmodels, data, complete = FALSE, ...){
                            paste0("pi",c(1:len.p.mod),collapse="*"),"))")))
 
     model<-paste0("model",length(mmodels):1)
-    for(ii_ in 1:length(mmodels)){
+    for(ii_ in 1:len.m.mod){
       eval(parse(text=paste0("data$part",ii_+1,"<-with(data,",
                              paste0(ifelse(ii_==1,"","("),exposure[c(1:ii_)-1],ifelse(ii_==1,1,"=="),EXPOmat[j,c(1:ii_)-1],
                                     ifelse(ii_==1,"",")"),collapse="*"),

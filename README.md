@@ -61,13 +61,13 @@ for(iiii in 1:loop){
   L0<-rnorm(NN)
   A0<-1*(runif(NN,0,1)<=p(0.6*L0))
 
-  L1<--A0+0.2*L0-1*X0*L0+rnorm(NN)
+  L1<--A0+0.2*L0-1*A0*L0+rnorm(NN)
   A1<-1*(runif(NN,0,1)<=p(-1+1.6*A0+1.2*L1-0.8*L0-1.6*L1*A0))
 
-  L2<--X1+1*L1-X0+1.2*L0+rnorm(NN)
+  L2<--A1+1*L1-A0+1.2*L0+rnorm(NN)
   A2<-1*(runif(NN,0,1)<=p(1-0.8*L0+1.6*A0+1.2*L1+1.3*A1+0.5*L2+1.6*L1*A1))
 
-  Y<-2*L0+3*X0+1*L1+2*X1-2*L2+5*X2+L2*X2+rnorm(NN)
+  Y<-2*L0+3*A0+1*L1+2*A1-2*L2+5*A2+L2*A2+rnorm(NN)
 
   DataSetList[[iiii]]<-data.frame(L0, L1, L2, A0, A1, A2, Y);rm(list=c("L0","L1","L2","A0","A1","A2","Y"))}
 rm("iiii")
