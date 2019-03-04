@@ -32,7 +32,7 @@ The example is extended data with variable with missing values.
 
 
 ## g.aipw.dicho
-Augmeneted inverse probability weighted function for binary exposures and continuous outcomes
+Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
 ```markdown
 g.aipw.dicho(mmodels,
              pmodels,
