@@ -2,13 +2,16 @@ g.aipw.dicho<-function(mmodels, pmodels, data, ...){
 
   outpoints<-do.call("g.aipw.dicho.formula", list(mmodels, pmodels, data, complete=TRUE))
   namesOfPoints<-names(outpoints)[!names(outpoints) %in% c("data","exposure")]
-  out<-vector("list",length(namesOfPoints))
+  out<-list()
 
-  names(out)<-paste0("E",namesOfPoints)
+  coef<-matrix(NA,ncol=1,nrow=length(namesOfPoints))
+  
   for( ii_ in 1:length(namesOfPoints)){
-  eval(parse(text=paste0("out$E",namesOfPoints[ii_],"<-mean(outpoints$",namesOfPoints[ii_],")")))
-  }
+  coef[ii_,]<-eval(parse(text=paste0("mean(outpoints$",namesOfPoints[ii_],")")))}
+  rownames(coef)<-paste0("E",namesOfPoints)
+  colnames(coef)<-"Estimate"
 
+  out$coef<-coef
   out$mmodels<-mmodels
   out$pmodels<-pmodels
   out$N<-nrow(data)
