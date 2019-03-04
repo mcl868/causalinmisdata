@@ -155,22 +155,18 @@ prob.of.missing(object,
 **Input**
 - *object*: the object is a *DataToPattern* and comes from the function **missing.pattern**.
 - *regression*: models bla
-- *list.out*: data bla
+- *list.out*: if it is TRUE the output is a list, see **Output**. If it is equal to FALSE then output is data only.
 - *completecase*: 
 - *regList*: 
 - *order*: 
 
 **Output**
-- *if list.out is equal to TRUE*
-- - *data*: the data of the choosen pattern of missingness ssh.
-- - *pattern*: the choosen pattern of missingness either *two level' or *monotone*.
-- - *regList*: the regression models that been used to obtain lambda.
-- - *CoefList*: the coefficients form the regression models.
-- - *count*: give the distribution of the observed variables in integers.
-- - *percent*: give the distribution of the observed variables in percent.
-
-- *if list.out is equal to FALSE*
--- *data*: the data of the choosen pattern of missingness ssh.
+- *data*: the data of the choosen pattern of missingness ssh (exist *if list.out is equal to TRUE of FALSE*).
+- *pattern*: the choosen pattern of missingness either *two level' or *monotone* (exist *if list.out is equal to TRUE*).
+- *regList*: the regression models that been used to obtain lambda (exist *if list.out is equal to TRUE*).
+- *CoefList*: the coefficients form the regression models (exist *if list.out is equal to TRUE*).
+- *count*: give the distribution of the observed variables in integers (exist *if list.out is equal to TRUE*).
+- *percent*: give the distribution of the observed variables in percent (exist *if list.out is equal to TRUE*).
 
 
 #### bla
