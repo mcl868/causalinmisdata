@@ -29,7 +29,6 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
   estVarpi<-glm(varpimodel, data=objdata,family=binomial())
   CoefList<-coef(estVarpi)
   objdata$varpi<-predict(estVarpi,type="response", newdata=objdata)
-  objdata$varpi[!objdata$C==Inf]<-NA
   }
     
   if(patternObj=="Monotone"){
