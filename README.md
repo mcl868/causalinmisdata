@@ -161,15 +161,15 @@ prob.of.missing(object,
 - *order*: 
 
 **Output**
--*if list.out is equal to TRUE*
--- *data*: the data of the choosen pattern of missingness ssh.
--- *pattern*: the choosen pattern of missingness either *two level' or *monotone*.
--- *regList*: the regression models that been used to obtain lambda.
--- *CoefList*: the coefficients form the regression models.
--- *count*: give the distribution of the observed variables in integers.
--- *percent*: give the distribution of the observed variables in percent.
+- *if list.out is equal to TRUE*
+- - *data*: the data of the choosen pattern of missingness ssh.
+- - *pattern*: the choosen pattern of missingness either *two level' or *monotone*.
+- - *regList*: the regression models that been used to obtain lambda.
+- - *CoefList*: the coefficients form the regression models.
+- - *count*: give the distribution of the observed variables in integers.
+- - *percent*: give the distribution of the observed variables in percent.
 
--*if list.out is equal to FALSE*
+- *if list.out is equal to FALSE*
 -- *data*: the data of the choosen pattern of missingness ssh.
 
 
