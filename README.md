@@ -47,7 +47,7 @@ For further information about the function write *?g.aipw.dicho* in r.
 ### DAG
 <img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
 
-Assume to 3 exposures
+Assume to 3 binary exposures $A_i$ and continuous outcome $Y$. Let $L_i$ be time-depending confounding for $i=0,...,2$
 
 #### Data
 ```markdown
@@ -99,18 +99,18 @@ missing.pattern(response,
 ```
 
 **Input**
-- *response*: models bla
-- *covariates*: models bla
-- *data*: data bla
-- *pattern*: Mono two
+- *response*: the outcome variable of interest.
+- *covariates*: the order of the variables of interest.
+- *data*: data.
+- *pattern*: the two different pattern of missingness *two level' or *monotone*.
 
 **Output**
-- *data*:
-- *covariatesObj*: 
-- *pattern*: Monotone Twolevel
-- *responseObj*:
-- *count*:
-- *percent*:
+- *data*: the data of the choosen pattern of missingness (used in the function **prob.of.missing**).
+- *covariatesObj*: the order of the variables of interest (used in the function **prob.of.missing**).
+- *pattern*: the choosen pattern of missingness either *two level' or *monotone* (used in the function **prob.of.missing**).
+- *responseObj*: the outcome variable of interest (used in the function **prob.of.missing**).
+- *count*: give the distribution of the observed variables in integers.
+- *percent*: give the distribution of the observed variables in percent.
 
 ### Missing data
 ```markdown
@@ -153,7 +153,7 @@ prob.of.missing(object,
                 order=NULL, ...)
 ```
 **Input**
-- *object*: models bla
+- *object*: the object is a *DataToPattern* and comes from the function **missing.pattern**.
 - *regression*: models bla
 - *list.out*: data bla
 - *completecase*: 
@@ -161,10 +161,17 @@ prob.of.missing(object,
 - *order*: 
 
 **Output**
-- *bla* if bla
-- *bla* if bla
-- *bla* if bla
-- *bla* if bla
+*if list.out is equal to TRUE*
+- *data*: the data of the choosen pattern of missingness ssh.
+- *pattern*: the choosen pattern of missingness either *two level' or *monotone*.
+- *regList*: the regression models that been used to obtain lambda.
+- *CoefList*: the coefficients form the regression models.
+- *count*: give the distribution of the observed variables in integers.
+- *percent*: give the distribution of the observed variables in percent.
+
+*if list.out is equal to FALSE*
+- *data*: the data of the choosen pattern of missingness ssh.
+
 
 #### bla
 ```markdown  

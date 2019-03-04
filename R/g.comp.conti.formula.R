@@ -1,4 +1,4 @@
-g.comp.conti.formula<-function(mmodels, exposure, data, complete = FALSE, ...){
+g.comp.formula<-function(mmodels, exposure, data, complete = FALSE, ...){
 
 if(all(exposure %in% names(data))){
 
@@ -8,8 +8,6 @@ if(all(exposure %in% names(data))){
 
   out<-list()
   out$data<-data
-
-  
 
   EXPOmat<-permutations(2,len.expo,c(0,1),repeats=TRUE)
 
