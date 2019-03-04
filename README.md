@@ -20,6 +20,8 @@ for further information
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
 
+- [g.comp.conti](https://github.com/mcl868/packagedevelop/blob/master/README.md#gcompconti)
+
 
 ## g.aipw.dicho
 Augmeneted inverse probability weighted function for binary exposures and continuous outcomes
@@ -266,5 +268,25 @@ for(iiii in 1:loop){
 
 
 
+
+
+
+
+## g.comp.conti
+```markdown
+g.comp.conti(mmodels,
+             exposure, 
+             data,...)}
+```
+**Input**
+- *mmodels*: models bla
+- *exposure*: models bla
+- *data*: bla
+
+**Output**
+- *mmodels*: The mmodels that have been used for modeling data.
+- *N*: The sample size of data.
+- *NCC*: The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
+- *exposure*: The exposure of the analysis.
 
 
