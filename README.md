@@ -15,12 +15,19 @@ and
 for further information
 
 ## This package contains following functions
+
+### For binary exposure
 - [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwdicho)
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
+Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/README.md#example) to see how to use 
+**g.aipw.dicho**. The example have a DAG with three binary exposure and time-depending confounding.
+The example is extended data with variable with missing values.
 
+### For continuous exposure
 - [g.comp.conti](https://github.com/mcl868/packagedevelop/blob/master/README.md#gcompconti)
+
 
 
 ## g.aipw.dicho
