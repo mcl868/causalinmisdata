@@ -11,10 +11,7 @@ print.aipwgcompdicho<-function(x, digits=3, ...){
 
     elements<-c("N","NCC","exposure","mmodels","pmodels")
 
-    Eobjects<-paste0("object$",names(object)[!names(object) %in% elements])
-    Est<-matrix(round(sapply(1:length(Eobjects),function(i)eval(parse(text=Eobjects[i]))),digits),ncol=1)
-    rownames(Est)<-paste("  ",names(object)[!names(object) %in% elements])
-    colnames(Est)<-"Est"
+    print(objects$coef)
     cat("\n")
     print(Est)
     cat("\n")
