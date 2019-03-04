@@ -11,9 +11,8 @@ print.aipwgcompdicho<-function(x, digits=3, ...){
 
     elements<-c("N","NCC","exposure","mmodels","pmodels")
 
-    print(objects$coef)
     cat("\n")
-    print(Est)
+    print(object$coef)
     cat("\n")
     if(object$N>object$NCC){
       cat("Used",object$NCC,"observations to estimation and",object$N-object$NCC,"records have been deleted.\n")
@@ -22,4 +21,3 @@ print.aipwgcompdicho<-function(x, digits=3, ...){
     
   }
 }
-
