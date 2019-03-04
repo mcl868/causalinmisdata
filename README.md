@@ -21,6 +21,7 @@ for further information
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
+
 Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/README.md#example) to see how to use 
 **g.aipw.dicho**. The example have a DAG with three binary exposure and time-depending confounding.
 The example is extended data with variable with missing values.
