@@ -45,22 +45,40 @@ if(pattern == "Monotone"){
     eval(parse(text=paste0("out$E",counter,"_mis<-mean(",paste0("part",c(1:(len.cov+1)),collapse="+"),")")))
   }
 } else {
+  coef<-matrix(NA,ncol=1,nrow=(2^len.expo))
+  listofnames<-c()
+  
   for(j in 1:(2^len.expo)){
     counter<-paste0(response.var(mmodels[[1]]),"_",paste0(EXPOmat[j,],collapse=""))
-    eval(parse(text=paste0("anadataobject$data$",counter,"<-anadataobject$",counter)))
-    eval(parse(text=paste0("part1<-with(anadataobject$data,indicator(1*(C==Inf),",counter,"/varpi))")))
 
-    confounderexposure<-anadataobject$data
-    eval(parse(text=paste0("confounderexposure$",exposure,"<-",EXPOmat[j,])))
-aug<-predict(glm(as.formula(paste0(counter," ~ ",paste0(attr(terms(model1),"term.labels"),collapse=" + "))),data=anadataobject$data),type="response",newdata=confounderexposure)
+    listofnames[j]<-paste0("E",counter)
 
-    eval(parse(text=paste0("part2<-with(anadataobject$data,(1*(C==Inf)-varpi)/varpi*aug)")))
+    counterM<-paste0("m_",paste0(EXPOmat[j,],collapse=""))
+    counterU<-paste0("Upsilon_",paste0(EXPOmat[j,],collapse=""))
+    eval(parse(text=paste0("anadataobject$data$weight",counter,"<-anadataobject$weight",counter)))
+    eval(parse(text=paste0("anadataobject$data$",counterM,"<-anadataobject$",counterM)))
+    eval(parse(text=paste0("anadataobject$data$",counterU,"<-anadataobject$",counterU)))
 
+    eval(parse(text=paste0("part1<-with(anadataobject$data,indicator(1*(C==Inf),(weight",counter,"-",counterM,")/varpi))")))
+    eval(parse(text=paste0("part2<-with(anadataobject$data,",counterM,")")))
+    eval(parse(text=paste0("part3<-with(anadataobject$data,",counterU,")")))
 
-  eval(parse(text=paste0("out$E",counter,"_mis<-mean(part1-part2)")))
+coef[j,]<-mean(part1+part2+part3)
+
+}
+  colnames(coef)<-"Estimate"
+  rownames(coef)<-listofnames
+
+  out$coef<-coef
 
 }
 
+  out$mmodels<-mmodels
+  out$pmodels<-pmodels
+  out$N<-nrow(data)
+  out$NCC<-nrow(probdataobject$data)
+  out$exposure<-outpoints$exposure
 
-}
+
+  attr(out, "class")<-"aipwccgcompdicho"
   return(out)}

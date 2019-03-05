@@ -1,7 +1,15 @@
 g.aipw.dicho<-function(mmodels, pmodels, data, ...){
 
+  len.p.mod<-length(pmodels)
+
+  EXPOmat<-permutations(2,len.p.mod,c(0,1),repeats=TRUE)
+  combivector<-c();for(i in 1:nrow(EXPOmat))combivector[i]<-paste0(EXPOmat[i,],collapse="")
+
   outpoints<-do.call("g.aipw.dicho.formula", list(mmodels, pmodels, data, complete=TRUE))
-  namesOfPoints<-names(outpoints)[!names(outpoints) %in% c("data","exposure")]
+  namesOfPoints<-names(outpoints)[!names(outpoints) %in% c("data","exposure",paste0("Upsilon_",combivector),
+                                                                             paste0("m_",combivector),
+                                                                             paste0("weightY_",combivector)]
+  rm(list=c("combivector","EXPOmat"))
   out<-list()
 
   coef<-matrix(NA,ncol=1,nrow=length(namesOfPoints))

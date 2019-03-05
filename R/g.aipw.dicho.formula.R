@@ -43,9 +43,19 @@ g.aipw.dicho.formula<-function(mmodels, pmodels, data, complete = FALSE, ...){
                              "/(",paste0("pi",c(1:ii_)-1,collapse="*"),
                              ")*(1-(",exposure[ii_],"==",EXPOmat[j,ii_],")/pi",ii_,")*",model[ii_],")")))
     }
-  
+
   eval(parse(text=paste0("out$",response.var(mmodels[[1]]),"_",paste(EXPOmat[j,],collapse=""),"<-with(data,(",
                          paste0("part",c(1:(len.m.mod+1)),collapse="+"),"))")))
+
+
+  eval(parse(text=paste0("out$weight",response.var(mmodels[[1]]),"_",paste(EXPOmat[j,],collapse=""),"<-with(data,(",response.var(mmodels[[1]]),"*",
+                           paste0("(",exposure,"==",EXPOmat[j,],")",collapse="*"),")/(",paste0("pi",c(1:len.p.mod),collapse="*"),"))")))
+  eval(parse(text=paste0("out$m_",paste(EXPOmat[j,],collapse=""),"<-with(data,(",response.var(mmodels[[2]]),"*",
+                         paste0("(",exposure,"==",EXPOmat[j,],")",collapse="*"),")/(",
+                         paste0("pi",c(1:len.p.mod),collapse="*"),"))")))
+  eval(parse(text=paste0("out$Upsilon_",paste(EXPOmat[j,],collapse=""),"<-with(data,(",
+                         paste0("part",c(2:(len.m.mod+1)),collapse="+"),"))")))
+
   }
   out$exposure<-exposure
 
