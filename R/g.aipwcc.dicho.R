@@ -77,7 +77,7 @@ coef[j,]<-mean(part1+part2+part3)
   out$pmodels<-pmodels
   out$N<-nrow(data)
   out$NCC<-nrow(probdataobject$data)
-  out$exposure<-outpoints$exposure
+  out$exposure<-exposure
 
 
   attr(out, "class")<-"aipwccgcompdicho"
