@@ -8,7 +8,7 @@ g.aipw.dicho<-function(mmodels, pmodels, data, ...){
   outpoints<-do.call("g.aipw.dicho.formula", list(mmodels, pmodels, data, complete=TRUE))
   namesOfPoints<-names(outpoints)[!names(outpoints) %in% c("data","exposure",paste0("Upsilon_",combivector),
                                                                              paste0("m_",combivector),
-                                                                             paste0("weightY_",combivector)]
+                                                                             paste0(paste0("weight",response.var(mmodels[[1]]),"_"),combivector))]
   rm(list=c("combivector","EXPOmat"))
   out<-list()
 
