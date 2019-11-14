@@ -2,7 +2,7 @@
 \alias{head.DataToPattern}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Haed
+haed
 }
 \description{
 Head call for an object from \code{prob.of.missing}.

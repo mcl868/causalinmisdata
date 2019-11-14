@@ -13,7 +13,7 @@ missing.pattern(response, covariates, data, pattern, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{response}{
-%%     ~~Describe \code{x} here~~
+The outcome variable in data. Format is a character.
 }
   \item{covariates}{
 %%     ~~Describe \code{x} here~~

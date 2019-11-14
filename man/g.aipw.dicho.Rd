@@ -5,7 +5,11 @@
 The augmented inverse probability weighting
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+The function solves the estimator to
+\begin{center}
+sum
+\end{center}
+gfg.
 }
 \usage{
 g.aipw.dicho(mmodels, pmodels, data, ...)
@@ -13,10 +17,10 @@ g.aipw.dicho(mmodels, pmodels, data, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mmodels}{
-%%     ~~Describe \code{x} here~~
+The models correspond to the models the outcome.
 }
   \item{pmodels}{
-%%     ~~Describe \code{x} here~~
+The models of the probabilities of the exposure.
 }
   \item{data}{
 %%
@@ -48,7 +52,35 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-dd
+\dontrun{
+p<-function(x)exp(x)/(1+exp(x))
+
+L0<-rnorm(10000)
+A0<-1*(runif(10000,0,1)<=p(0.6*L0))
+
+L1<--A0+0.2*L0-1*A0*L0+rnorm(10000)
+A1<-1*(runif(10000,0,1)<=p(-1+1.6*A0+1.2*L1-0.8*L0-1.6*L1*A0))
+
+L2<--A1+1*L1-A0+1.2*L0+rnorm(10000)
+A2<-1*(runif(10000,0,1)<=p(1-0.8*L0+1.6*A0+1.2*L1+1.3*A1+0.5*L2+1.6*L1*A1))
+
+Y<-2*L0+3*A0+1*L1+2*A1-2*L2+5*A2+L2*A2+rnorm(10000)
+
+DataSet<-data.frame(L0, L1, L2, A0, A1, A2, Y)
+rm(list=c("L0","L1","L2","A0","A1","A2","Y"))
+
+pi1 <- A0 ~ L0
+pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
+pi3 <- A2 ~ L0 + A0 + L1 + A1 + L2 + L1*A1
+
+model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
+model2 <- model1 ~ A1 + L1 + A0 + L0
+model3 <- model2 ~ A0 + L0 + A0*L0
+
+g.aipw.dicho(mmodels=c(model1,model2,model3), 
+             pmodels=c(pi1,pi2,pi3), 
+             data=DataSet)
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
