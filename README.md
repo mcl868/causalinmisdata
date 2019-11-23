@@ -1,5 +1,6 @@
 # causalinmisdata
 
+[Go back to homepage](https://mcl868.github.io/)
 To install the package from GitHub:
 ```markdown
 install.packages("devtools")
