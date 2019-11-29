@@ -2,6 +2,8 @@
 
 [Go back to homepage](https://mcl868.github.io/)
 
+[go clone](https://github.com/mcl868/causalinmisdata.git)
+
 To install the package from GitHub:
 ```markdown
 install.packages("devtools")
