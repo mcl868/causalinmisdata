@@ -20,6 +20,7 @@ for further information
 
 ### For binary exposure
 - [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwdicho)
+- [g.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gdicho)
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
@@ -51,6 +52,25 @@ g.aipw.dicho(mmodels,
 
 For further information about the function write *?g.aipw.dicho* in r.
 
+## g.dicho
+Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
+```markdown
+g.aipw.dicho(mmodels,
+             data,...)
+```
+
+**Input**
+- *mmodels*: Models corresponding to response. See example.
+- *data*: Data.
+
+**Output**
+- *mmodels*:  The mmodels that have been used for modeling data.
+- *N*:        The sample size of data.
+- *NCC*:      The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
+- *exposure*: The exposure of the analysis.
+
+For further information about the function write *?g.dicho* in r.
+
 ## Example
 ### DAG
 <img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
@@ -66,8 +86,11 @@ be time-depending confounding for
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" title="\\L_0:=\varepsilon\\ A_0:=p(0.6L_0)\\ L_1:=-A_0+0.2L_0-A_0L_0+\varepsilon\\ A_1:=p(-1+1.6A_0+1.2L_1-0.8L_0-1.6L_1A_0)\\ L_2:=A_1+L_1-A_0+1.2L_0+\varepsilon\\ A_2:=p(1-0.8L_0+1.6A_0+1.2L_1+1.3A_1+0.5L_2+1.6L_1A_1)\\ Y:=2L_0+3A_0+L_1+2A_1-2L_2+A_2+L_2A_2+\varepsilon\\" /></a>
 
-where
-<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon\sim" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon\sim" title="\varepsilon\sim" /></a>
+where all
+<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon" title="\varepsilon" /></a>
+are normal distributed with mean zero and variance one and
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" title="p(x):=\frac{\exp(x)}{1+\exp(x)}" /></a>
 
 
 
@@ -96,10 +119,7 @@ for(iiii in 1:loop){
 rm("iiii")
 ```
 
-
-![a_1]
-
-#### bla
+#### Estimation with the doubly robust estimator
 ```markdown
 pi1 <- A0 ~ L0
 pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
@@ -109,28 +129,23 @@ model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
 model2 <- model1 ~ A1 + L1 + A0 + L0
 model3 <- model2 ~ A0 + L0 + A0*L0
 
-estimation<-list()
+estimationDR<-list()
 for(iiii in 1:loop){
-  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
-                                   pmodels=c(pi1,pi2,pi3),
-                                   data=DataSetList[[iiii]])}
+  estimationDR[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
+                                     pmodels=c(pi1,pi2,pi3),
+                                     data=DataSetList[[iiii]])}
 ```
 
-#### bla
+#### Estimation with the simpler estimator
 ```markdown
-pi1 <- A0 ~ L0
-pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
-pi3 <- A2 ~ L0 + A0 + L1 + A1 + L2 + L1*A1
-
 model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
 model2 <- model1 ~ A1 + L1 + A0 + L0
 model3 <- model2 ~ A0 + L0 + A0*L0
 
-estimation<-list()
+estimationSG<-list()
 for(iiii in 1:loop){
-  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
-                                   pmodels=c(pi1,pi2,pi3),
-                                   data=DataSetList[[iiii]])}
+  estimationSG[[iiii]]<-g.dicho(mmodels=c(model1,model2,model3),
+                                data=DataSetList[[iiii]])}
 ```
 
 ### missing.pattern
