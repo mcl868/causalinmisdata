@@ -28,10 +28,6 @@ Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/READM
 **g.aipw.dicho**. The example have a DAG with three binary exposure and time-depending confounding.
 The example is extended data with variable with missing values.
 
-### For continuous exposure
-- [g.comp.conti](https://github.com/mcl868/packagedevelop/blob/master/README.md#gcompconti)
-
-
 
 ## g.aipw.dicho
 Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
@@ -66,6 +62,7 @@ Assume to 3 binary exposures $A_i$ and continuous outcome $Y$. Let $L_i$ be time
 p<-function(x)exp(x)/(1+exp(x))
 
 loop<-2000
+NN<-1000
 
 set.seed(3)
 DataSetList<-list()
