@@ -9,13 +9,13 @@ print.gcompdicho<-function(x, digits=3, ...){
     cat("exposures:\n")
     for(iii_ in 1:length(object$exposure)){print(object$exposure[[iii_]])}
 
-    elements<-c("N","NCC","exposure","mmodels","pmodels")
+    elements<-c("N","NCC","exposure","mmodels")
 
     cat("\n")
     print(object$coef)
     cat("\n")
     if(object$N>object$NCC){
-      cat("Used",object$NCC,"observations to estimation and",object$N-object$NCC,"records have been deleted.\n")
+      cat("Used",object$NCC,"observations to estimation and",with(object,N-NCC),"records have been deleted.\n")
     }else{
       cat("Used",object$NCC,"observations to estimation.\n")}
     

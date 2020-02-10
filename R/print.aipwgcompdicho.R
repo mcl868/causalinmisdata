@@ -15,7 +15,7 @@ print.aipwgcompdicho<-function(x, digits=3, ...){
     print(object$coef)
     cat("\n")
     if(object$N>object$NCC){
-      cat("Used",object$NCC,"observations to estimation and",object$N-object$NCC,"records have been deleted.\n")
+      cat("Used",object$NCC,"observations to estimation and",with(object,N-NCC),"records have been deleted.\n")
     }else{
       cat("Used",object$NCC,"observations to estimation.\n")}
     
