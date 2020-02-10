@@ -10,7 +10,7 @@ devtools::install_github("mcl868/causalinmisdata")
 If the package *devtools* is already installed then it is **not** nessecary to use the command
 *install.packages("devtools")*.
 
-This package require addtional packages 
+This package require addtional packages
 [HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md)
 and
 [gtools](https://cran.r-project.org/web/packages/gtools/index.html)
@@ -24,7 +24,7 @@ for further information
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
 
-Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/README.md#example) to see how to use 
+Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/README.md#example) to see how to use
 **g.aipw.dicho**. The example have a DAG with three binary exposure and time-depending confounding.
 The example is extended data with variable with missing values.
 
@@ -55,8 +55,16 @@ For further information about the function write *?g.aipw.dicho* in r.
 ### DAG
 <img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
 
-Assume to 3 binary exposures $A_i$ and continuous outcome $Y$. Let $L_i$ be time-depending confounding for $i=0,...,2$
-<a href="https://www.codecogs.com/eqnedit.php?latex=L_0&:=\varepsilon\\&space;A_0&:=p(0.6L_0)\\&space;L_1&:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1&:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2&:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2&:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1*A_1)\\&space;Y&:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;5A_2&plus;L_2A_2&plus;\varepsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_0&:=\varepsilon\\&space;A_0&:=p(0.6L_0)\\&space;L_1&:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1&:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2&:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2&:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1*A_1)\\&space;Y&:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;5A_2&plus;L_2A_2&plus;\varepsilon" title="L_0&:=\varepsilon\\ A_0&:=p(0.6L_0)\\ L_1&:=-A_0+0.2L_0-A_0L_0+\varepsilon\\ A_1&:=p(-1+1.6A_0+1.2L_1-0.8L_0-1.6L_1A_0)\\ L_2&:=A_1+L_1-A_0+1.2L_0+\varepsilon\\ A_2&:=p(1-0.8L_0+1.6A_0+1.2L_1+1.3A_1+0.5L_2+1.6L_1*A_1)\\ Y&:=2L_0+3A_0+L_1+2A_1-2L_2+5A_2+L_2A_2+\varepsilon" /></a>
+Assume to 3 binary exposures
+<a href="https://www.codecogs.com/eqnedit.php?latex=A_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_i" title="A_i" /></a>
+and continuous outcome
+<a href="https://www.codecogs.com/eqnedit.php?latex=Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y" title="Y" /></a>.
+Let
+<a href="https://www.codecogs.com/eqnedit.php?latex=L_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_i" title="L_i /></a>
+
+be time-depending confounding for $i=0,...,2$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" title="\\L_0:=\varepsilon\\ A_0:=p(0.6L_0)\\ L_1:=-A_0+0.2L_0-A_0L_0+\varepsilon\\ A_1:=p(-1+1.6A_0+1.2L_1-0.8L_0-1.6L_1A_0)\\ L_2:=A_1+L_1-A_0+1.2L_0+\varepsilon\\ A_2:=p(1-0.8L_0+1.6A_0+1.2L_1+1.3A_1+0.5L_2+1.6L_1A_1)\\ Y:=2L_0+3A_0+L_1+2A_1-2L_2+A_2+L_2A_2+\varepsilon\\" /></a>
 
 #### Data
 ```markdown
@@ -98,8 +106,8 @@ model3 <- model2 ~ A0 + L0 + A0*L0
 
 estimation<-list()
 for(iiii in 1:loop){
-  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3), 
-                                   pmodels=c(pi1,pi2,pi3), 
+  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
+                                   pmodels=c(pi1,pi2,pi3),
                                    data=DataSetList[[iiii]])}
 ```
 
@@ -115,16 +123,16 @@ model3 <- model2 ~ A0 + L0 + A0*L0
 
 estimation<-list()
 for(iiii in 1:loop){
-  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3), 
-                                   pmodels=c(pi1,pi2,pi3), 
+  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
+                                   pmodels=c(pi1,pi2,pi3),
                                    data=DataSetList[[iiii]])}
 ```
 
 ### missing.pattern
 ```markdown
-missing.pattern(response, 
-                covariates, 
-                data, 
+missing.pattern(response,
+                covariates,
+                data,
                 pattern, ...)
 ```
 
@@ -153,7 +161,7 @@ for(iiii in 1:loop){
   REMOVE2<-with(upd1,1*(runif(nrow(upd1),0,1)<=p(-2.3+0.2*L0-0.2*A0)))
   updata2<-upd1[REMOVE2==1,];upd2<-upd1[REMOVE2==0,]
   updata2[,c("L1","A1","L2","A2","Y")]<-NA
-  
+
   REMOVE3<-with(upd2,1*(runif(nrow(upd2),0,1)<=p(-2.4-0.3*L0+0.2*A0-0.2*L1)))
   updata3<-upd2[REMOVE3==1,];upd3<-upd2[REMOVE3==0,]
   updata3[,c("A1","L2","A2","Y")]<-NA
@@ -203,8 +211,8 @@ prob.of.missing(object,
 ```markdown  
 estimationNA<-list()
 for(iiii in 1:loop){
-  estimationNA[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3), 
-                                     pmodels=c(pi1,pi2,pi3), 
+  estimationNA[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
+                                     pmodels=c(pi1,pi2,pi3),
                                      data=DataSetListNA[[iiii]])}
 
 regList<-list()
@@ -234,27 +242,27 @@ for(iiii in 1:loop){
   Coef6List[[iiii]]<-DataSetobj$CoefList[[6]]}
 
 listMean(DataSetCount)
-       1        2        3        4        5        6      Inf 
+       1        2        3        4        5        6      Inf
 217.2500 151.9170 172.9670 161.1325 203.7540 176.3445 916.6350
 
 round(listMean(Coef1List),1)
-(Intercept)          L0 
-       -2.2        -0.5 
+(Intercept)          L0
+       -2.2        -0.5
 round(listMean(Coef2List),1)
-(Intercept)          L0          A0 
-       -2.3         0.2        -0.2 
+(Intercept)          L0          A0
+       -2.3         0.2        -0.2
 round(listMean(Coef3List),1)
-(Intercept)          L0          A0          L1 
-       -2.4        -0.3         0.2        -0.2 
+(Intercept)          L0          A0          L1
+       -2.4        -0.3         0.2        -0.2
 round(listMean(Coef4List),1)
-(Intercept)          L0          A0          L1          A1 
-       -2.3         0.4         0.2         0.8         0.5 
+(Intercept)          L0          A0          L1          A1
+       -2.3         0.4         0.2         0.8         0.5
 round(listMean(Coef5List),1)
-(Intercept)          L0          A0          L1          A1          L2 
-       -2.2         0.4         0.2         0.7         0.5        -0.3 
+(Intercept)          L0          A0          L1          A1          L2
+       -2.2         0.4         0.2         0.7         0.5        -0.3
 round(listMean(Coef6List),1)
-(Intercept)          L0          A0          L1          A1          L2          A2       A1:A2 
-       -2.0         0.4         0.2         0.7        -0.5        -0.3         1.2        -1.4 
+(Intercept)          L0          A0          L1          A1          L2          A2       A1:A2
+       -2.0         0.4         0.2         0.7        -0.5        -0.3         1.2        -1.4
 
 ```
 
@@ -293,7 +301,3 @@ for(iiii in 1:loop){
                                         pattern = "Monotone",
                                         regList=regList)}
 ```
-
-
-
-
