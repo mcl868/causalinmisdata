@@ -47,10 +47,10 @@ g.aipw.dicho(mmodels,
 - *data*: Data.
 
 **Output**
-- *mmodels*: The mmodels that have been used for modeling data.
-- *pmodels*: The pmodels that have been used for modeling data.
-- *N*: The sample size of data.
-- *NCC*: The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
+- *mmodels*:  The mmodels that have been used for modeling data.
+- *pmodels*:  The pmodels that have been used for modeling data.
+- *N*:        The sample size of data.
+- *NCC*:      The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
 - *exposure*: The exposure of the analysis.
 
 For further information about the function write *?g.aipw.dicho* in r.
@@ -117,12 +117,12 @@ missing.pattern(response,
 - *pattern*: the two different pattern of missingness *two level* or *monotone*.
 
 **Output**
-- *data*: the data of the choosen pattern of missingness (used in the function **prob.of.missing**).
-- *covariatesObj*: the order of the variables of interest (used in the function **prob.of.missing**).
-- *pattern*: the choosen pattern of missingness either *two level* or *monotone* (used in the function **prob.of.missing**).
-- *responseObj*: the outcome variable of interest (used in the function **prob.of.missing**).
-- *count*: give the distribution of the observed variables in integers.
-- *percent*: give the distribution of the observed variables in percent.
+- *data*:          The data of the choosen pattern of missingness (used in the function **prob.of.missing**).
+- *covariatesObj*: The order of the variables of interest (used in the function **prob.of.missing**).
+- *pattern*:       The choosen pattern of missingness either *two level* or *monotone* (used in the function **prob.of.missing**).
+- *responseObj*:   The outcome variable of interest (used in the function **prob.of.missing**).
+- *count*:         The number of the observed variables in integers.
+- *percent*:       The precent of the observed variables.
 
 ### Missing data
 ```markdown
@@ -277,26 +277,5 @@ for(iiii in 1:loop){
 ```
 
 
-
-
-
-
-
-## g.comp.conti
-```markdown
-g.comp.conti(mmodels,
-             exposure, 
-             data,...)}
-```
-**Input**
-- *mmodels*: models bla
-- *exposure*: models bla
-- *data*: bla
-
-**Output**
-- *mmodels*: The mmodels that have been used for modeling data.
-- *N*: The sample size of data.
-- *NCC*: The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
-- *exposure*: The exposure of the analysis.
 
 
