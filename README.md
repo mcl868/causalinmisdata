@@ -90,9 +90,12 @@ where all
 <a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon" title="\varepsilon" /></a>
 are normal distributed with mean zero and variance one and
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" title="p(x):=\frac{\exp(x)}{1+\exp(x)}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?p(x):=\frac{\exp(x)}{1&plus;\exp(x)}" title="p(x):=\frac{\exp(x)}{1+\exp(x)}" /></a>.
+
+Sample size at each data is 1000 and replicated 2000.
 
 
+$$A_i$$
 
 #### Data
 ```markdown
