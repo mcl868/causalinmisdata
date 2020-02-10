@@ -60,11 +60,15 @@ Assume to 3 binary exposures
 and continuous outcome
 <a href="https://www.codecogs.com/eqnedit.php?latex=Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y" title="Y" /></a>.
 Let
-<a href="https://www.codecogs.com/eqnedit.php?latex=L_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A_i" title="L_i /></a>
-
-be time-depending confounding for $i=0,...,2$
+<a href="https://www.codecogs.com/eqnedit.php?latex=L_i" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_i" title="L_i" /></a>
+be time-depending confounding for
+<a href="https://www.codecogs.com/eqnedit.php?latex=i=0,...,2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?i=0,...,2" title="i=0,...,2" /></a>.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\\L_0:=\varepsilon\\&space;A_0:=p(0.6L_0)\\&space;L_1:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1A_1)\\&space;Y:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;A_2&plus;L_2A_2&plus;\varepsilon\\" title="\\L_0:=\varepsilon\\ A_0:=p(0.6L_0)\\ L_1:=-A_0+0.2L_0-A_0L_0+\varepsilon\\ A_1:=p(-1+1.6A_0+1.2L_1-0.8L_0-1.6L_1A_0)\\ L_2:=A_1+L_1-A_0+1.2L_0+\varepsilon\\ A_2:=p(1-0.8L_0+1.6A_0+1.2L_1+1.3A_1+0.5L_2+1.6L_1A_1)\\ Y:=2L_0+3A_0+L_1+2A_1-2L_2+A_2+L_2A_2+\varepsilon\\" /></a>
+where
+<a href="https://www.codecogs.com/eqnedit.php?latex=\varepsilon\sim" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\varepsilon\sim" title="\varepsilon\sim" /></a>
+
+
 
 #### Data
 ```markdown
