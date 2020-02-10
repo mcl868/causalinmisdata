@@ -82,6 +82,26 @@ for(iiii in 1:loop){
 rm("iiii")
 ```
 
+
+\[\]
+
+#### bla
+```markdown
+pi1 <- A0 ~ L0
+pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
+pi3 <- A2 ~ L0 + A0 + L1 + A1 + L2 + L1*A1
+
+model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
+model2 <- model1 ~ A1 + L1 + A0 + L0
+model3 <- model2 ~ A0 + L0 + A0*L0
+
+estimation<-list()
+for(iiii in 1:loop){
+  estimation[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3), 
+                                   pmodels=c(pi1,pi2,pi3), 
+                                   data=DataSetList[[iiii]])}
+```
+
 #### bla
 ```markdown
 pi1 <- A0 ~ L0
