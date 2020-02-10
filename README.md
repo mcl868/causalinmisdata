@@ -57,6 +57,8 @@ For further information about the function write *?g.aipw.dicho* in r.
 
 Assume to 3 binary exposures $A_i$ and continuous outcome $Y$. Let $L_i$ be time-depending confounding for $i=0,...,2$
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=L_0&:=\varepsilon\\&space;A_0&:=p(0.6L_0)\\&space;L_1&:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1&:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2&:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2&:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1*A_1)\\&space;Y&:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;5A_2&plus;L_2A_2&plus;\varepsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?L_0&:=\varepsilon\\&space;A_0&:=p(0.6L_0)\\&space;L_1&:=-A_0&plus;0.2L_0-A_0L_0&plus;\varepsilon\\&space;A_1&:=p(-1&plus;1.6A_0&plus;1.2L_1-0.8L_0-1.6L_1A_0)\\&space;L_2&:=A_1&plus;L_1-A_0&plus;1.2L_0&plus;\varepsilon\\&space;A_2&:=p(1-0.8L_0&plus;1.6A_0&plus;1.2L_1&plus;1.3A_1&plus;0.5L_2&plus;1.6L_1*A_1)\\&space;Y&:=2L_0&plus;3A_0&plus;L_1&plus;2A_1-2L_2&plus;5A_2&plus;L_2A_2&plus;\varepsilon" title="L_0&:=\varepsilon\\ A_0&:=p(0.6L_0)\\ L_1&:=-A_0+0.2L_0-A_0L_0+\varepsilon\\ A_1&:=p(-1+1.6A_0+1.2L_1-0.8L_0-1.6L_1A_0)\\ L_2&:=A_1+L_1-A_0+1.2L_0+\varepsilon\\ A_2&:=p(1-0.8L_0+1.6A_0+1.2L_1+1.3A_1+0.5L_2+1.6L_1*A_1)\\ Y&:=2L_0+3A_0+L_1+2A_1-2L_2+5A_2+L_2A_2+\varepsilon" /></a>
+
 #### Data
 ```markdown
 p<-function(x)exp(x)/(1+exp(x))
