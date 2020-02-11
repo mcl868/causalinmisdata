@@ -4,34 +4,11 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
   
   objdata<-object$data
   covariatesObj<-object$covariatesObj
-  patternObj<-object$pattern
   responseObj<-object$responseObj	
 
   
 ################
 # Pattern
-  if(patternObj=="TwoLevel"){
-  	if(!missing(regList)){varpimodel<-regList[[1]]
-  	  } else {
-    if(missing(regression)){
-      regression<-"simple"
-      message("regression is simple")
-    }
-    if(regression=="simple")varpimodel<-paste0("1*(C==Inf) ~ ",paste0(covariatesObj,collapse=" + "))
-    if(regression=="interaction")varpimodel<-paste0("1*(C==Inf) ~ ",paste0(covariatesObj,collapse=" * "))
-    if("higherorder" %in% unlist(strsplit(regression,split = "[.]"))){
-      orderterm<-unlist(strsplit(regression,split = "[.]"))
-      order<-as.numeric(orderterm[!orderterm %in% "higherorder"])
-      regterm<-paste0(unlist(lapply(1:order,function(i)paste0("I(", covariatesObj,"^",i,")"))),collapse=" + ")
-      varpimodel<-paste0("1*(C==Inf) ~ ", regterm)
-      }
-    }
-  estVarpi<-glm(varpimodel, data=objdata,family=binomial())
-  CoefList<-coef(estVarpi)
-  objdata$varpi<-predict(estVarpi,type="response", newdata=objdata)
-  }
-    
-  if(patternObj=="Monotone"){
   levels<-as.numeric(rownames(table(objdata$C))[!rownames(table(objdata$C)) %in% Inf])
   qq<-c(1:length(covariatesObj))
   eval(parse(text=paste0("objdata$lambda",qq[!(qq %in% levels)],"<-0")))
@@ -52,8 +29,7 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
       regList[[iii_]]<-lambdamodel
       CoefList[[iii_]]<-coef(glm(lambdamodel, data= objdata[objdata$C>=iii_,],family=binomial()))
       lambda<-predict(glm(lambdamodel, data= objdata[objdata$C>=iii_,],family=binomial()),type="response", newdata=objdata)
-  	  eval(parse(text=paste0("objdata$lambda",iii_,"<-lambda")))
-      }
+      eval(parse(text=paste0("objdata$lambda",iii_,"<-lambda")))
     }
   objdatalambda<-objdata[,paste0("lambda",qq)]
   objdatalambda[is.na(objdata[,covariatesObj])]<-NA
@@ -74,17 +50,8 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
       message("Complete Case")
       out$completecase
     }
-    out$data<-objdata
-    if(patternObj=="TwoLevel"){
-      out$pattern<-patternObj
-      out$varpimodel<-varpimodel
-      out$CoefList<-CoefList
-    }
-    if(patternObj=="Monotone"){
-      out$pattern<-patternObj
-      out$regList<-regList
-      out$CoefList<-CoefList
-    }
+    out$regList<-regList
+    out$CoefList<-CoefList
     out$count<-addmargins(table(objdata$C))
     out$percent<-table(objdata$C)/nrow(objdata)
 
