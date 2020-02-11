@@ -94,9 +94,6 @@ are normal distributed with mean zero and variance one and
 
 Sample size at each data is 1000 and replicated 2000.
 
-
-$$A_i$$
-
 #### Data
 ```markdown
 p<-function(x)exp(x)/(1+exp(x))
@@ -174,6 +171,10 @@ missing.pattern(response,
 - *percent*:       The precent of the observed variables.
 
 ### Missing data
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0)&space;\\\lambda_2(G_2(Z))&:=p(-2.3&plus;0.2L_0-0.2A_0)&space;\\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0&plus;0.2A_0-0.2L_1)))&space;\\\lambda_4(G_4(Z))&:=p(-2.3&plus;0.4L_0&plus;0.2A_0&plus;0.8L_1&plus;0.5A_1)&space;\\\lambda_5(G_5(Z))&:=p(-2.2&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1&plus;0.5A_1-0.3L_2)&space;\\\lambda_6(G_6(Z))&:=p(-2.0&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1-0.5A_1-0.3L_2&plus;1.2A_2-1.4A_1A_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0)&space;\\\lambda_2(G_2(Z))&:=p(-2.3&plus;0.2L_0-0.2A_0)&space;\\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0&plus;0.2A_0-0.2L_1)))&space;\\\lambda_4(G_4(Z))&:=p(-2.3&plus;0.4L_0&plus;0.2A_0&plus;0.8L_1&plus;0.5A_1)&space;\\\lambda_5(G_5(Z))&:=p(-2.2&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1&plus;0.5A_1-0.3L_2)&space;\\\lambda_6(G_6(Z))&:=p(-2.0&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1-0.5A_1-0.3L_2&plus;1.2A_2-1.4A_1A_2)" title="\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0) \\\lambda_2(G_2(Z))&:=p(-2.3+0.2L_0-0.2A_0) \\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0+0.2A_0-0.2L_1))) \\\lambda_4(G_4(Z))&:=p(-2.3+0.4L_0+0.2A_0+0.8L_1+0.5A_1) \\\lambda_5(G_5(Z))&:=p(-2.2+0.4L_0+0.2A_0+0.7L_1+0.5A_1-0.3L_2) \\\lambda_6(G_6(Z))&:=p(-2.0+0.4L_0+0.2A_0+0.7L_1-0.5A_1-0.3L_2+1.2A_2-1.4A_1A_2)" /></a>
+
 ```markdown
 DataSetListNA<-list()
 for(iiii in 1:loop){
