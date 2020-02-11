@@ -81,7 +81,7 @@ out<-list()
   out$mmodels<-mmodels
   out$pmodels<-pmodels
   out$N<-nrow(data)
-  out$NCC<-nrow(probdataobject$data)
+  out$NCC<-nrow(na.omit(probdataobject$data))
   out$exposure<-exposure
   out$pattern<-pattern
 
