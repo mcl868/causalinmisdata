@@ -12,7 +12,7 @@ print.ProbToData<-function(x, digits=3, ...){
     }
   }
   cat("Data:\n")
-  print(round(head(object$data),digits)) 
+  print(round(head(object),digits)) 
     
   }
 }

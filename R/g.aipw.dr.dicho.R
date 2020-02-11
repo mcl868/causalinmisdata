@@ -34,20 +34,15 @@ out<-list()
       eval(parse(text=paste0("confounderexposure$",exposure,"<-",EXPOmat[j,])))
 
   if(is.null(augList)){
-      for(jj_ in 1:len.cov){
-      augList<-as.formula(paste0(counter," ~ ",paste0(covariates[1:jj_],collapse=" + ")))
-      augV<-predict(glm(augList,data=anadataobject$data),type="response",newdata=confounderexposure)
-      eval(parse(text=paste0("part",jj_+1,"<-with(anadataobject$data,indicator(1*(C>=",jj_,"),(1*(C==",jj_,")-lambda",jj_,"*(C>=",jj_,"))/K",jj_,"*augV))")))
-      }
-  } else {
-      for(jj_ in 1:length(augList)){
-      augListobj<-as.formula(paste0(counter," ~ ",augList[jj_]))
-      augV<-predict(glm(augListobj,data=anadataobject$data),type="response",newdata=confounderexposure)
-      eval(parse(text=paste0("part",jj_+1,"<-with(anadataobject$data,indicator(1*(C>=",jj_,"),(1*(C==",jj_,")-lambda",jj_,"*(C>=",jj_,"))/K",jj_,"*augV))")))
-      }
+    augList<-lapply(1:len.cov,function(i) paste0(covariates[1:i],collapse=" + "))
   }
 
-      eval(parse(text=paste0("coef[",j,",]<-mean(",paste0("part",c(1:(len.cov+1)),collapse="+"),")")))
+  for(jj_ in 1:len.cov){
+    augListobj<-as.formula(paste0(counter," ~ ",augList[[jj_]]))
+    augV<-predict(glm(augListobj,data=anadataobject$data),type="response",newdata=confounderexposure)
+    eval(parse(text=paste0("part",jj_+1,"<-with(anadataobject$data,indicator(1*(C>=",jj_,"),(1*(C==",jj_,")-lambda",jj_,"*(C>=",jj_,"))/K",jj_,"*augV))")))
+  }
+    eval(parse(text=paste0("coef[",j,",]<-mean(",paste0("part",c(1:(len.cov+1)),collapse="+"),")")))
 }
   colnames(coef)<-"Estimate"
   rownames(coef)<-listofnames
@@ -60,7 +55,7 @@ out<-list()
   out$N<-nrow(data)
   out$NCC<-nrow(na.omit(probdataobject$data))
   out$exposure<-exposure
-
+  out$augList<-augList
 
   attr(out, "class")<-"aipwdrgcompdicho"
   return(out)}
