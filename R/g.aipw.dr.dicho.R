@@ -1,4 +1,4 @@
-g.aipwcc.dicho<-function(mmodels, pmodels, covariates, pattern, regList, data, ...){
+g.aipw.dr.dicho<-function(mmodels, pmodels, covariates, pattern, regList, data, ...){
 
 out<-list()
   misdataobject<-do.call("missing.pattern",list(response = response.var(mmodels[[1]]),
@@ -86,5 +86,5 @@ out<-list()
   out$pattern<-pattern
 
 
-  attr(out, "class")<-"aipwccgcompdicho"
+  attr(out, "class")<-"aipwdrgcompdicho"
   return(out)}
