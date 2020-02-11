@@ -54,6 +54,7 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
     out$CoefList<-CoefList
     out$count<-addmargins(table(objdata$C))
     out$percent<-table(objdata$C)/nrow(objdata)
+    output<-objdata
 
     attr(out, "class")<-"ProbToData"
     output<-structure(out, class = "ProbToData")
