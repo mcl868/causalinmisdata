@@ -16,6 +16,9 @@ and
 [gtools](https://cran.r-project.org/web/packages/gtools/index.html)
 for further information
 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" title="E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_T=\overline{a}_T, \overline{L}_T=\overline{l}_T) \prod_{t=0}^Tf_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t" /></a>
+
 ## This package contains following functions
 
 ### For binary exposure
@@ -77,6 +80,22 @@ For further information about the function write *?g.dicho* in r.
 ### DAG
 <img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_2=\overline{a}_2,&space;\overline{L}_2=\overline{l}_2)&space;\prod_{t=0}^2f_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_2=\overline{a}_2,&space;\overline{L}_2=\overline{l}_2)&space;\prod_{t=0}^2f_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" title="E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_2=\overline{a}_2, \overline{L}_2=\overline{l}_2) \prod_{t=0}^2f_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\overline{A}_2=(A_0,A_1,A_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overline{A}_2=(A_0,A_1,A_2)" title="\overline{A}_2=(A_0,A_1,A_2)" /></a>
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\overline{a}_2=(a_0,a_1,a_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overline{a}_2=(a_0,a_1,a_2)" title="\overline{a}_2=(a_0,a_1,a_2)" /></a>
+
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\overline{L}_2=(L_0,L_1,L_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overline{L}_2=(L_0,L_1,L_2)" title="\overline{L}_2=(L_0,L_1,L_2)" /></a>
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\overline{l}_2=(l_0,l_1,l_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overline{l}_2=(l_0,l_1,l_2)" title="\overline{l}_2=(l_0,l_1,l_2)" /></a>
+
+### simulate data
+
 Assume to 3 binary exposures
 <a href="https://www.codecogs.com/eqnedit.php?latex=A_i" target="_blank">
 <img src="https://latex.codecogs.com/gif.latex?A_i" title="A_i" /></a>
@@ -103,6 +122,9 @@ are normal distributed with mean zero and variance one and
 
 Sample size at each data is 1000 and replicated 2000.
 
+MSM
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{(a_0,a_1,a_2)}\right)=6a_0&plus;4a_1&plus;5a_2-2a_0a_2-a_1a_2" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{(a_0,a_1,a_2)}\right)=6a_0&plus;4a_1&plus;5a_2-2a_0a_2-a_1a_2" title="E\left(Y^{(a_0,a_1,a_2)}\right)=6a_0+4a_1+5a_2-2a_0a_2-a_1a_2" /></a>
 
 #### Data
 set.seed(3)
