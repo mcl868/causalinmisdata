@@ -39,7 +39,6 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
   for(iiii_ in qq){eval(parse(text=paste0("objdata$K",iiii_,"<-objdata$K",iiii_-1,"*(1-objdata$lambda",iiii_,")")))}
   objdata$K0<-NULL
   eval(parse(text=paste0("objdata$varpi<-objdata$K",length(regList))))
-  }
     
 # Pattern
 ################
