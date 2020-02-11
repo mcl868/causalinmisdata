@@ -65,7 +65,7 @@ prob.of.missing<-function(object, regression, list.out = TRUE, completecase = FA
     output<-objdata
   }
   
-
+}
   return(output)
   }
 }
