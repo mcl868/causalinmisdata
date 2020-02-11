@@ -41,7 +41,7 @@ out<-list()
       }
   } else {
       for(jj_ in 1:length(augList)){
-      augListobj<-as.formula(paste0(counter," ~ ",augList[jj_])))
+      augListobj<-as.formula(paste0(counter," ~ ",augList[jj_]))
       augV<-predict(glm(augListobj,data=anadataobject$data),type="response",newdata=confounderexposure)
       eval(parse(text=paste0("part",jj_+1,"<-with(anadataobject$data,indicator(1*(C>=",jj_,"),(1*(C==",jj_,")-lambda",jj_,"*(C>=",jj_,"))/K",jj_,"*augV))")))
       }
