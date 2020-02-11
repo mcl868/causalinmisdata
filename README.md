@@ -105,29 +105,7 @@ Sample size at each data is 1000 and replicated 2000.
 
 
 #### Data
-```markdown
-p<-function(x)exp(x)/(1+exp(x))
-
-loop<-2000
-NN<-1000
-
 set.seed(3)
-DataSetList<-list()
-for(iiii in 1:loop){
-  L0<-rnorm(NN)
-  A0<-1*(runif(NN,0,1)<=p(0.6*L0))
-
-  L1<--A0+0.2*L0-1*A0*L0+rnorm(NN)
-  A1<-1*(runif(NN,0,1)<=p(-1+1.6*A0+1.2*L1-0.8*L0-1.6*L1*A0))
-
-  L2<--A1+1*L1-A0+1.2*L0+rnorm(NN)
-  A2<-1*(runif(NN,0,1)<=p(1-0.8*L0+1.6*A0+1.2*L1+1.3*A1+0.5*L2+1.6*L1*A1))
-
-  Y<-2*L0+3*A0+1*L1+2*A1-2*L2+5*A2+L2*A2+rnorm(NN)
-
-  DataSetList[[iiii]]<-data.frame(L0, L1, L2, A0, A1, A2, Y);rm(list=c("L0","L1","L2","A0","A1","A2","Y"))}
-rm("iiii")
-```
 
 #### Estimation with the doubly robust estimator
 ```markdown
@@ -183,35 +161,6 @@ missing.pattern(response,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0)&space;\\\lambda_2(G_2(Z))&:=p(-2.3&plus;0.2L_0-0.2A_0)&space;\\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0&plus;0.2A_0-0.2L_1)))&space;\\\lambda_4(G_4(Z))&:=p(-2.3&plus;0.4L_0&plus;0.2A_0&plus;0.8L_1&plus;0.5A_1)&space;\\\lambda_5(G_5(Z))&:=p(-2.2&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1&plus;0.5A_1-0.3L_2)&space;\\\lambda_6(G_6(Z))&:=p(-2.0&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1-0.5A_1-0.3L_2&plus;1.2A_2-1.4A_1A_2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0)&space;\\\lambda_2(G_2(Z))&:=p(-2.3&plus;0.2L_0-0.2A_0)&space;\\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0&plus;0.2A_0-0.2L_1)))&space;\\\lambda_4(G_4(Z))&:=p(-2.3&plus;0.4L_0&plus;0.2A_0&plus;0.8L_1&plus;0.5A_1)&space;\\\lambda_5(G_5(Z))&:=p(-2.2&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1&plus;0.5A_1-0.3L_2)&space;\\\lambda_6(G_6(Z))&:=p(-2.0&plus;0.4L_0&plus;0.2A_0&plus;0.7L_1-0.5A_1-0.3L_2&plus;1.2A_2-1.4A_1A_2)" title="\\\lambda_1(G_1(Z))&:=p(-2.2-0.5L_0) \\\lambda_2(G_2(Z))&:=p(-2.3+0.2L_0-0.2A_0) \\\lambda_3(G_3(Z))&:=p(-2.4-0.3L_0+0.2A_0-0.2L_1))) \\\lambda_4(G_4(Z))&:=p(-2.3+0.4L_0+0.2A_0+0.8L_1+0.5A_1) \\\lambda_5(G_5(Z))&:=p(-2.2+0.4L_0+0.2A_0+0.7L_1+0.5A_1-0.3L_2) \\\lambda_6(G_6(Z))&:=p(-2.0+0.4L_0+0.2A_0+0.7L_1-0.5A_1-0.3L_2+1.2A_2-1.4A_1A_2)" /></a>
 
-```markdown
-DataSetListNA<-list()
-for(iiii in 1:loop){
-  REMOVE1<-with(DataSetList[[iiii]],1*(runif(nrow(DataSetList[[iiii]]),0,1)<=p(-2.2-0.5*L0)))
-  updata1<-DataSetList[[iiii]][REMOVE1==1,];upd1<-DataSetList[[iiii]][REMOVE1==0,]
-  updata1[,c("A0","L1","A1","L2","A2","Y")]<-NA
-
-  REMOVE2<-with(upd1,1*(runif(nrow(upd1),0,1)<=p(-2.3+0.2*L0-0.2*A0)))
-  updata2<-upd1[REMOVE2==1,];upd2<-upd1[REMOVE2==0,]
-  updata2[,c("L1","A1","L2","A2","Y")]<-NA
-
-  REMOVE3<-with(upd2,1*(runif(nrow(upd2),0,1)<=p(-2.4-0.3*L0+0.2*A0-0.2*L1)))
-  updata3<-upd2[REMOVE3==1,];upd3<-upd2[REMOVE3==0,]
-  updata3[,c("A1","L2","A2","Y")]<-NA
-
-  REMOVE4<-with(upd3,1*(runif(nrow(upd3),0,1)<=p(-2.3+0.4*L0+0.2*A0+0.8*L1+0.5*A1)))
-  updata4<-upd3[REMOVE4==1,];upd4<-upd3[REMOVE4==0,]
-  updata4[,c("L2","A2","Y")]<-NA
-
-  REMOVE5<-with(upd4,1*(runif(nrow(upd4),0,1)<=p(-2.2+0.4*L0+0.2*A0+0.7*L1+0.5*A1-0.3*L2)))
-  updata5<-upd4[REMOVE5==1,];upd5<-upd4[REMOVE5==0,]
-  updata5[,c("A2","Y")]<-NA
-
-  REMOVE6<-with(upd5,1*(runif(nrow(upd5),0,1)<=p(-2+0.4*L0+0.2*A0+0.7*L1-0.5*A1-0.3*L2+1.2*A2-1.4*A1*A2)))
-  updata6<-upd5[REMOVE6==1,];updata7<-upd5[REMOVE6==0,]
-  updata6[,c("Y")]<-NA
-
-  DataSetListNA[[iiii]]<-rbind(updata1,updata2,updata3,updata4,updata5,updata6,updata7)[sample(1:NN,NN),]}
-```
 
 ### prob.of.missing
 ```markdown
