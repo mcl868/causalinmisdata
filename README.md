@@ -56,11 +56,13 @@ For further information about the function write *?g.aipw.dicho* in r.
 Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
 ```markdown
 g.aipw.dicho(mmodels,
+             exposure,
              data,...)
 ```
 
 **Input**
 - *mmodels*: Models corresponding to response. See example.
+- *exposure*: The time-varying exposure. See example.
 - *data*: Data.
 
 **Output**
@@ -153,6 +155,7 @@ model3 <- model2 ~ A0 + L0 + A0*L0
 estimationSG<-list()
 for(iiii in 1:loop){
   estimationSG[[iiii]]<-g.dicho(mmodels=c(model1,model2,model3),
+                                exposure=c("A0","A1","A2"),
                                 data=DataSetList[[iiii]])}
 ```
 
@@ -160,20 +163,17 @@ for(iiii in 1:loop){
 ```markdown
 missing.pattern(response,
                 covariates,
-                data,
-                pattern, ...)
+                data, ...)
 ```
 
 **Input**
 - *response*:   The outcome variable of interest.
 - *covariates*: The order of the variables of interest.
 - *data*:       The data.
-- *pattern*:    The two different pattern of missingness *two level* or *monotone*.
 
 **Output**
 - *data*:          The data of the choosen pattern of missingness (used in the function **prob.of.missing**).
 - *covariatesObj*: The order of the variables of interest (used in the function **prob.of.missing**).
-- *pattern*:       The choosen pattern of missingness either *two level* or *monotone* (used in the function **prob.of.missing**).
 - *responseObj*:   The outcome variable of interest (used in the function **prob.of.missing**).
 - *count*:         The number of the observed variables in integers.
 - *percent*:       The precent of the observed variables.
@@ -232,7 +232,6 @@ prob.of.missing(object,
 
 **Output**
 - *data*:     The data of the choosen pattern of missingness ssh (exist *if list.out is equal to TRUE of FALSE*).
-- *pattern*:  The choosen pattern of missingness either *two level* or *monotone* (exist *if list.out is equal to TRUE*).
 - *regList*:  The regression models that been used to obtain lambda (exist *if list.out is equal to TRUE*).
 - *CoefList*: The coefficients form the regression models (exist *if list.out is equal to TRUE*).
 - *count*:    The numbers of the observed variables in integers (exist *if list.out is equal to TRUE*).
@@ -260,8 +259,7 @@ CountList<-Coef1List<-Coef2List<-Coef3List<-Coef4List<-Coef5List<-Coef6List<-lis
 for(iiii in 1:loop){
   misdata<-missing.pattern(response = "Y",
                            covariates = c("L0","A0","L1","A1","L2","A2"),
-                           data = DataSetListNA[[iiii]],
-                           pattern = "Monotone")
+                           data = DataSetListNA[[iiii]])
 
   DataSetobj<-prob.of.missing(misdata, regList = regList)
 
@@ -303,7 +301,6 @@ round(listMean(Coef6List),1)
 g.aipwcc.dicho(mmodels,
                pmodels,
                covariates,
-               pattern,
                regList,
                data,
                aug = NULL,...)}
