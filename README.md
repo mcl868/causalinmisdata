@@ -301,3 +301,6 @@ for(iiii in 1:loop){
                                         pattern = "Monotone",
                                         regList=regList)}
 ```
+
+### Bibliography
+- [1]
