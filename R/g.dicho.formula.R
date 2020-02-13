@@ -14,7 +14,7 @@ g.dicho.formula<-function(mmodels, exposure, data, complete = FALSE, ...){
   for(j in 1:(2^len.expo)){
     confounderexposure<-data
     eval(parse(text=paste0("confounderexposure$",exposure,"<-",EXPOmat[j,])))
-    for(ii_ in 1:length(mmodels)){
+    for(ii_ in 1:len.m.mod){
       mvalues<-predict(glm(mmodels[[ii_]], data = data),type="response",newdata=confounderexposure)
       eval(parse(text=paste0("data$model",ii_,"<-mvalues")))
     }
@@ -22,7 +22,6 @@ g.dicho.formula<-function(mmodels, exposure, data, complete = FALSE, ...){
 
   eval(parse(text=paste0("out$Y_",paste0(EXPOmat[j,],collapse=""),"<-mvalues")))
 
-  estimate[j,]<-mean(eval(parse(text=paste0("data$model",length(mmodels)))))
   estimate[j,]<-mean(eval(parse(text=paste0("data$model",length(mmodels)))))
   estname[j]<-paste0("EY",paste0(EXPOmat[j,],collapse=""))
   }
