@@ -20,7 +20,7 @@ out<-list()
 
   EXPOmat<-permutations(2,len.expo,c(0,1),repeats=TRUE)
 
-  coef<-matrix(NA,ncol=1,nrow=(2^len.expo))
+  ExpectEstimate<-matrix(NA,ncol=1,nrow=(2^len.expo))
     listofnames<-c()
 
     for(j in 1:(2^len.expo)){
@@ -42,14 +42,16 @@ out<-list()
     augV<-predict(glm(augListobj,data=anadataobject$data),type="response",newdata=confounderexposure)
     eval(parse(text=paste0("part",jj_+1,"<-with(anadataobject$data,indicator(1*(C>=",jj_,"),(1*(C==",jj_,")-lambda",jj_,"*(C>=",jj_,"))/K",jj_,"*augV))")))
   }
-    eval(parse(text=paste0("coef[",j,",]<-mean(",paste0("part",c(1:(len.cov+1)),collapse="+"),")")))
+    eval(parse(text=paste0("ExpectEstimate[",j,",]<-mean(",paste0("part",c(1:(len.cov+1)),collapse="+"),")")))
 }
-  colnames(coef)<-"Estimate"
-  rownames(coef)<-listofnames
+  colnames(ExpectEstimate)<-"Estimate"
+  rownames(ExpectEstimate)<-listofnames
+
+  out$ExpectEstimate<-ExpectEstimate
+
+  coef<-parametercausal(outpoints$exposure,ExpectEstimate)
 
   out$coef<-coef
-
-
   out$mmodels<-mmodels
   out$pmodels<-pmodels
   out$N<-nrow(data)
