@@ -13,6 +13,7 @@ g.dicho<-function(mmodels, exposure, data, ...){
   coef<-parametercausal(exposure,outpoints$estimate)
   
   out$coef<-coef
+  out$ExpectEstimate<-outpoints$estimate
   out$mmodels<-mmodels
   out$exposure<-exposure 
   out$N<-nrow(data)

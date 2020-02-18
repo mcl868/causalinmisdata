@@ -12,14 +12,17 @@ g.aipw.dicho<-function(mmodels, pmodels, data, ...){
   rm(list=c("combivector","EXPOmat"))
   out<-list()
 
-  coef<-matrix(NA,ncol=1,nrow=length(namesOfPoints))
+  ExpectEstimate<-matrix(NA,ncol=1,nrow=length(namesOfPoints))
   
   for( ii_ in 1:length(namesOfPoints)){
-  coef[ii_,]<-eval(parse(text=paste0("mean(outpoints$",namesOfPoints[ii_],")")))}
-  rownames(coef)<-paste0("E",namesOfPoints)
-  colnames(coef)<-"Estimate"
+  ExpectEstimate[ii_,]<-eval(parse(text=paste0("mean(outpoints$",namesOfPoints[ii_],")")))}
+  rownames(ExpectEstimate)<-paste0("E",namesOfPoints)
+  colnames(ExpectEstimate)<-"Estimate"
+
+  coef<-parametercausal(outpoints$exposure,ExpectEstimate)
 
   out$coef<-coef
+  out$ExpectEstimate<-ExpectEstimate
   out$mmodels<-mmodels
   out$pmodels<-pmodels
   out$N<-nrow(data)
