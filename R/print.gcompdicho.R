@@ -4,10 +4,10 @@ print.gcompdicho<-function(x, digits=3, ...){
   if(inherits(object,"gcompdicho")){
 
     cat("m/mu-models:\n")
-    for(iii_ in 1:length(object$mmodels)){print(round(object$mmodels[[iii_]],digits=digits))}
+    for(iii_ in 1:length(object$mmodels)){print(object$mmodels[[iii_]])}
     cat("\n")
     cat("exposures:\n")
-    for(iii_ in 1:length(object$exposure)){print(round(object$exposure[[iii_]],digits=digits))}
+    for(iii_ in 1:length(object$exposure)){print(object$exposure[[iii_]])}
 
     elements<-c("N","NCC","exposure","mmodels")
 
