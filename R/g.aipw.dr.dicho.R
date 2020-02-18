@@ -49,7 +49,7 @@ out<-list()
 
   out$ExpectEstimate<-ExpectEstimate
 
-  coef<-parametercausal(outpoints$exposure,ExpectEstimate)
+  coef<-parametercausal(exposure,ExpectEstimate)
 
   out$coef<-coef
   out$mmodels<-mmodels

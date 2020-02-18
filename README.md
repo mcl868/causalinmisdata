@@ -10,11 +10,11 @@ devtools::install_github("mcl868/causalinmisdata")
 If the package *devtools* is already installed then it is **not** nessecary to use the command
 *install.packages("devtools")*.
 
-This package require addtional packages
-[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md)
+This package require additional three packages
+[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md),
+[combinat](https://cran.r-project.org/web/packages/combinat/index.html)
 and
-[gtools](https://cran.r-project.org/web/packages/gtools/index.html)
-for further information
+[gtools](https://cran.r-project.org/web/packages/gtools/index.html).
 
 something Robins [[1]](https://github.com/mcl868/causalinmisdata/blob/master/README.md#bibliography)
 
