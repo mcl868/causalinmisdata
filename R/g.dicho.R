@@ -10,10 +10,8 @@ g.dicho<-function(mmodels, exposure, data, ...){
   rm(list=c("combivector","EXPOmat"))
   out<-list()
 
-  coef<-outpoints$estimate
+  coef<-parametercausal(exposure,outpoints$estimate)
   
-  colnames(coef)<-"Estimate"
-
   out$coef<-coef
   out$mmodels<-mmodels
   out$exposure<-exposure 
