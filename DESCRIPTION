@@ -5,9 +5,9 @@ Version: 0.1.0
 Author: Thomas Maltesen
 Maintainer: Thomas Maltesen <mcl868@alumni.ku.dk>
 Description: Analysing data with missing observations.
-Imports: HelpPackage, gtools
+Imports: HelpPackage, gtools, combinat
 Remotes: mcl868/HelpPackage
-Depends: HelpPackage, gtools
+Depends: HelpPackage, gtools, combinat
 URL: https://github.com/mcl868/causalinmisdata.git
 License: GPL (>= 3)
 Encoding: UTF-8
