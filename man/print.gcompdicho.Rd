@@ -1,37 +1,26 @@
-\name{g.aipwcc.dicho}
-\alias{g.aipwcc.dicho}
+\name{print.gcompdicho}
+\alias{print.gcompdicho}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The augmented inverse probability weighting complete case
+Prints call
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+Prints call for an object from \code{g.dicho}.
 }
 \usage{
-g.aipwcc.dicho(mmodels, pmodels, covariates, pattern, regList, data, aug = NULL, ...)
+## S3 method for class 'g.dicho'
+print(x, digits=3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{mmodels}{
-%%     ~~Describe \code{x} here~~
+  \item{x}{
+An \code{g.dicho} object.
 }
-  \item{pmodels}{
-%%     ~~Describe \code{x} here~~
+  \item{digits}{
+To decide how many digits the object has to return with.
 }
-  \item{covariates}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{pattern}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{regList}{
-%%
-}
-  \item{data}{
-%%
-}
-  \item{aug}{
-%%
+  \item{\dots}{
+For further arguments for the \code{print}-function.
 }
 }
 \details{
@@ -45,7 +34,7 @@ g.aipwcc.dicho(mmodels, pmodels, covariates, pattern, regList, data, aug = NULL,
 %% ...
 }
 \references{
-put references to the literature/web site here
+%% ~put references to the literature/web site here ~
 }
 \author{
 Thomas Maltesen
@@ -60,8 +49,7 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-dd
-
+Look at \code{\link{g.dicho}}.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

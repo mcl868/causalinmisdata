@@ -1,20 +1,20 @@
-\name{print.aipw.gcompdicho}
-\alias{print.aipw.gcompdicho}
+\name{print.TransformMonotone}
+\alias{print.TransformMonotone}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Prints call
 }
 \description{
-Prints call for an object from \code{g.aipw.dicho}.
+Prints call for an object from \code{print.TransformMonotone}.
 }
 \usage{
-## S3 method for class 'g.aipw.dicho'
+## S3 method for class 'print.TransformMonotone'
 print(x, digits=3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-An \code{g.aipw.dicho} object.
+An \code{prob.of.missing} object.
 }
   \item{digits}{
 To decide how many digits the object has to return with.
@@ -49,7 +49,7 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-Look at \code{\link{g.aipw.dicho}}.
+Look at \code{\link{TransformMonotone}}.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

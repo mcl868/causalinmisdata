@@ -1,23 +1,20 @@
-\name{print.aipw.gcompdicho}
-\alias{print.aipw.gcompdicho}
+\name{coef.ProbToData}
+\alias{coef.ProbToData}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Prints call
+haed
 }
 \description{
-Prints call for an object from \code{g.aipw.dicho}.
+Head call for an object from \code{prob.of.missing}.
 }
 \usage{
-## S3 method for class 'g.aipw.dicho'
-print(x, digits=3, ...)
+## S3 method for class 'prob.of.missing'
+print(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-An \code{g.aipw.dicho} object.
-}
-  \item{digits}{
-To decide how many digits the object has to return with.
+An \code{prob.of.missing} object.
 }
   \item{\dots}{
 For further arguments for the \code{print}-function.
@@ -49,7 +46,7 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-Look at \code{\link{g.aipw.dicho}}.
+Look at \code{\link{prob.of.missing}}.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
