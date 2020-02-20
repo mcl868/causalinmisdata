@@ -1,4 +1,4 @@
-parametercausal<-function(expo, estoutcom, ...){
+parametercausal<-function(expo, estoutcome, ...){
   len.expo<-length(expo)
 
   mcexpo<-modelcomponent(expo)
@@ -11,7 +11,7 @@ parametercausal<-function(expo, estoutcom, ...){
   for(i in 1:2**len.expo){
   solvepara[i,]<-modelindicator(expo=EXPOmat[i,])}
 
-  param<-solve(solvepara)%*%estoutcom
+  param<-solve(solvepara)%*%estoutcome
   rownames(param)<-mcexpo
   colnames(param)<-"Est."
   return(t(param))}

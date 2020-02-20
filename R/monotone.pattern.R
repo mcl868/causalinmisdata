@@ -1,4 +1,4 @@
-monotone.pattern<-function(measurements, dataset, id=NULL, transform=TRUE, threshold=0.05){
+monotone.pattern<-function(measurements, dataset, id=NULL, transform=TRUE, threshold=0.05, ...){
 
   out<-list()
 
