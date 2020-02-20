@@ -49,7 +49,7 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-Look at \code{\link{TransformMonotone}}.
+Look at \code{\link{monotone.pattern}}.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
