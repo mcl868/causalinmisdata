@@ -35,6 +35,8 @@ seq.mediator.formula<-function(mmodels, exposure, int, data, complete = FALSE, .
         eval(parse(text=paste0("data$model",iii_,"<-mvalues")))}
       rm("confounderexposure")
 
+    eval(parse(text=paste0("out$modelest",ii_ ,"<-data$model",len.m.mod)))
+
     eval(parse(text=paste0("modelest",ii_ ,"<-mean(data$model",len.m.mod,")")))}
 
   for(i in 1:(length(EXPOmat)-1)){

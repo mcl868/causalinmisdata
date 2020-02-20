@@ -9,7 +9,7 @@ out<-list()
                                                  regList = regList))
 
   anadataobject<-do.call("g.dicho.formula",list(mmodels = mmodels,
-                                                exposure= exposure,
+                                                exposure = exposure,
                                                 data = probdataobject$data))
 
   len.m.mod<-length(mmodels)
