@@ -5,16 +5,16 @@
 Prints call
 }
 \description{
-Prints call for an object from \code{print.TransformMonotone}.
+Prints call for an object from \code{monotone.pattern}.
 }
 \usage{
-## S3 method for class 'print.TransformMonotone'
+## S3 method for class 'monotone.pattern'
 print(x, digits=3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-An \code{prob.of.missing} object.
+An \code{monotone.pattern} object.
 }
   \item{digits}{
 To decide how many digits the object has to return with.
