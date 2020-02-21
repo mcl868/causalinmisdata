@@ -75,7 +75,7 @@ For further information about the function write *?g.dicho* in r.
 
 ### simulate data
 
-[dag](https://github.com/mcl868/causalinmisdata/blob/master/Images/dag.png)
+![dag](https://github.com/mcl868/causalinmisdata/blob/master/Images/dag.png)
 
 Assume to 3 binary exposures
 <a href="https://www.codecogs.com/eqnedit.php?latex=A_i" target="_blank">
