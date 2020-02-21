@@ -22,7 +22,7 @@ seq.mediator.formula<-function(mmodels, exposure, int, data, complete = FALSE, .
                   matrix(0,nrow=len.m.mod,ncol=len.expo,dimnames = list(rep("",len.m.mod),exposure)))
   for(i in 1:(len.m.mod+1))EXPOmat[[i]][,exposure %in% int]<-exposcombi[,i]
 
-  while (any(duplicated(EXPOmat))) {
+  while(any(duplicated(EXPOmat))){
     for(ll_ in c(1:length(EXPOmat))[duplicated(EXPOmat)])EXPOmat[[ll_]]<-NULL}
 
   
@@ -42,9 +42,10 @@ seq.mediator.formula<-function(mmodels, exposure, int, data, complete = FALSE, .
   for(i in 1:(length(EXPOmat)-1)){
     eval(parse(text=paste0("out$",ifelse(i==1,"dirEst",paste0("indirEst_M",i-1)),"<-modelest",i+1,"-modelest",i)))}
 
-  out$nb.effects<-(length(EXPOmat)-2)
 
+  out$nb.effects<-(length(EXPOmat)-2)
   out$exposure<-exposure
+  out$EXPOmat<-EXPOmat
 
   attr(out, "class")<-"seqmediatorformula"
   return(out)}
