@@ -6,9 +6,7 @@ The augmented inverse probability weighting
 }
 \description{
 The function solves the estimator to
-\begin{center}
-sum
-\end{center}
+
 gfg.
 }
 \usage{
