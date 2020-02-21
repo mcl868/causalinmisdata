@@ -7,18 +7,19 @@ To install the package from GitHub:
 install.packages("devtools")
 devtools::install_github("mcl868/causalinmisdata")
 ```
-If the package *devtools* is already installed then it is **not** nessecary to use the command
+If the package *devtools* is already installed then it is **not** necessary to use the command
 *install.packages("devtools")*.
 
-This package require additional three packages
+This package requires additional three packages
 [HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md),
 [combinat](https://cran.r-project.org/web/packages/combinat/index.html)
 and
 [gtools](https://cran.r-project.org/web/packages/gtools/index.html).
 
-something Robins [[1]](https://github.com/mcl868/causalinmisdata/blob/master/README.md#bibliography)
+Robins [[1]](https://github.com/mcl868/causalinmisdata/blob/master/README.md#bibliography)
+defines the g-formula given by
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" title="E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_T=\overline{a}_T, \overline{L}_T=\overline{l}_T) \prod_{t=0}^Tf_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." title="E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_T=\overline{a}_T, \overline{L}_T=\overline{l}_T) \prod_{t=0}^Tf_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t." /></a>
 
 ## This package contains following functions
 
@@ -27,6 +28,9 @@ something Robins [[1]](https://github.com/mcl868/causalinmisdata/blob/master/REA
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
 - [g.dr.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
+
+#### Sequential mediation
+- [seq.mediator]
 
 Look at the example to see how to use **g.dicho**.
 The example have a DAG with three binary exposure and time-depending confounding.
@@ -125,16 +129,16 @@ missing.pattern(response,
 ```
 
 **Input**
-- *response*:   The outcome variable of interest.
-- *covariates*: The order of the variables of interest.
+- *response*:   The outcome variable of the interest.
+- *covariates*: The ordered sequence of the variables of the interest.
 - *data*:       The data.
 
 **Output**
-- *data*:          The data of the choosen pattern of missingness (used in the function **prob.of.missing**).
-- *covariatesObj*: The order of the variables of interest (used in the function **prob.of.missing**).
-- *responseObj*:   The outcome variable of interest (used in the function **prob.of.missing**).
+- *data*:          The data of the chosen pattern of missingness (used in the function **prob.of.missing**).
+- *covariatesObj*: The ordered sequence of the variables of the interest (used in the function **prob.of.missing**).
+- *responseObj*:   The outcome variable of the interest (used in the function **prob.of.missing**).
 - *count*:         The number of the observed variables in integers.
-- *percent*:       The precent of the observed variables.
+- *percent*:       The percent of the observed variables.
 
 ### Missing data
 
@@ -171,9 +175,9 @@ prob.of.missing(object,
 ```markdown  
 estimationNA<-list()
 for(iiii in 1:loop){
-  estimationNA[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
-                                     pmodels=c(pi1,pi2,pi3),
-                                     data=DataSetListNA[[iiii]])}
+  estimationNA[[iiii]]<-g.dicho(mmodels=c(model1,model2,model3),
+                                pmodels=c(pi1,pi2,pi3),
+                                data=DataSetListNA[[iiii]])}
 
 regList<-list()
 regList[[1]]<-"L0"
@@ -259,6 +263,19 @@ for(iiii in 1:loop){
                                         pattern = "Monotone",
                                         regList=regList)}
 ```
+
+
+### Missing estimation
+```markdown
+seq.mediator(mmodels,
+             exposure,
+             int,
+             data,
+             ...)
+```
+
+
+
 
 ### Bibliography
 - [1] James Robins. A new approach to causal inference in mortality studies with a sustained
