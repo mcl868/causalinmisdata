@@ -1,6 +1,5 @@
-coef.ProbToData<-function(x,...){
+coef.ProbToData<-function(x, digits=3, ...){
   object<-x
   rm(x)
   if(inherits(object,"ProbToData")){
-  return(object$CoefList)
-  }}
+  return(round(object$CoefList,digits=digits))}}
