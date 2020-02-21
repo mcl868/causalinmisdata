@@ -23,38 +23,14 @@ something Robins [[1]](https://github.com/mcl868/causalinmisdata/blob/master/REA
 ## This package contains following functions
 
 ### For binary exposure
-- [g.aipw.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwdicho)
 - [g.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gdicho)
 - [missing.pattern](https://github.com/mcl868/packagedevelop/blob/master/README.md#missingpattern)
 - [prob.of.missing](https://github.com/mcl868/packagedevelop/blob/master/README.md#probofmissing)
-- [g.aipwcc.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
+- [g.dr.dicho](https://github.com/mcl868/packagedevelop/blob/master/README.md#gaipwccdicho)
 
-Look at the [example](https://github.com/mcl868/packagedevelop/blob/master/README.md#example) to see how to use
-**g.aipw.dicho**. The example have a DAG with three binary exposure and time-depending confounding.
+Look at the example to see how to use **g.dicho**.
+The example have a DAG with three binary exposure and time-depending confounding.
 The example is extended data with variable with missing values.
-
-
-## g.aipw.dicho
-Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
-```markdown
-g.aipw.dicho(mmodels,
-             pmodels,
-             data,...)
-```
-
-**Input**
-- *mmodels*: Models corresponding to response. See example.
-- *pmodels*: Models for the probability of receive a certain treatment. See example.
-- *data*: Data.
-
-**Output**
-- *mmodels*:  The mmodels that have been used for modeling data.
-- *pmodels*:  The pmodels that have been used for modeling data.
-- *N*:        The sample size of data.
-- *NCC*:      The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
-- *exposure*: The exposure of the analysis.
-
-For further information about the function write *?g.aipw.dicho* in r.
 
 ## g.dicho
 Augmeneted inverse probability weighted (AIPW) function for binary exposures and continuous outcomes
@@ -78,8 +54,6 @@ g.aipw.dicho(mmodels,
 For further information about the function write *?g.dicho* in r.
 
 ## Example
-### DAG
-<img src="https://user-images.githubusercontent.com/20704019/52327724-60d3ec00-29ed-11e9-86fd-e4fa37fa1bd7.PNG" width="480">
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_2=\overline{a}_2,&space;\overline{L}_2=\overline{l}_2)&space;\prod_{t=0}^2f_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_2=\overline{a}_2,&space;\overline{L}_2=\overline{l}_2)&space;\prod_{t=0}^2f_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t" title="E\left(Y^{(a_0,a_1,a_2)}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_2=\overline{a}_2, \overline{L}_2=\overline{l}_2) \prod_{t=0}^2f_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t" /></a>
 
@@ -129,23 +103,6 @@ MSM
 
 #### Data
 set.seed(3)
-
-#### Estimation with the doubly robust estimator
-```markdown
-pi1 <- A0 ~ L0
-pi2 <- A1 ~ L0 + A0 + L1 + L1*A0
-pi3 <- A2 ~ L0 + A0 + L1 + A1 + L2 + L1*A1
-
-model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
-model2 <- model1 ~ A1 + L1 + A0 + L0
-model3 <- model2 ~ A0 + L0 + A0*L0
-
-estimationDR<-list()
-for(iiii in 1:loop){
-  estimationDR[[iiii]]<-g.aipw.dicho(mmodels=c(model1,model2,model3),
-                                     pmodels=c(pi1,pi2,pi3),
-                                     data=DataSetList[[iiii]])}
-```
 
 #### Estimation with the simpler estimator
 ```markdown
