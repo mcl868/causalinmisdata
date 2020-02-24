@@ -40,7 +40,7 @@ monotone.pattern<-function(measurements, data, id=NULL, transform=TRUE, threshol
     out$tableCpercentredu<-(table(datasetredu$C)/nrow(datasetredu))
   } else {
     out$data<-datasetOrg
-    out$nonmontone<-c(1:nb)[dataset$transform=="YES"]
+    out$nonmonotone<-c(1:nb)[dataset$transform=="YES"]
   }
 
     attr(out, "class")<-"TransformMonotone"
