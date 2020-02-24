@@ -54,7 +54,7 @@ out<-list()
 
   out$coef<-matrix(c(coef,sum(coef)),nrow=1)
   rownames(out$coef)<-"Est"
-  rownames(out$coef)<-c("dir",if(nb.effects>0)paste0("indir_M",c(1:nb.effects)),"overall")
+  colnames(out$coef)<-c("dir",if(nb.effects>0)paste0("indir_M",c(1:nb.effects)),"overall")
 
   out$mmodels<-mmodels
   out$N<-nrow(data)
