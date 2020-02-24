@@ -52,13 +52,18 @@ out<-list()
 
   coef<-sapply(1:(nb.effects+1),function(i)Estimates[i+1,]-Estimates[i,])
 
-  out$coef<-coef
+  out$coef<-matrix(coef,nrow=1)
+  rownames(out$coef)<-"Est."
+  colnames(out$coef)<-c("dir",paste0("indir_M",c(1:nb.effects)))
 
   out$mmodels<-mmodels
   out$N<-nrow(data)
   out$NCC<-nrow(na.omit(probdataobject$data))
   out$exposure<-exposure
   out$augList<-augList
+  out$regList<-probdataobject$regList
+  out$count<-probdataobject$count
+  out$CoefList<-probdataobject$CoefList
 
   attr(out, "class")<-"seqdrmediator"
   return(out)}
