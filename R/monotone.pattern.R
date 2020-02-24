@@ -1,13 +1,12 @@
-monotone.pattern<-function(measurements, dataset, id=NULL, transform=TRUE, threshold=0.05, ...){
+monotone.pattern<-function(measurements, data, id=NULL, transform=TRUE, threshold=0.05, ...){
 
   out<-list()
 
-  datasetOrg<-dataset
+  datasetOrg<-data
 
-  if(!is.null(id)){rownames(dataset)<-
-                   dataset[,colnames(dataset)[colnames(dataset) %in% id]]}
+  if(!is.null(id)){rownames(data)<-data[,colnames(data)[colnames(data) %in% id]]}
 
-  dataset<-dataset[,measurements]
+  dataset<-data[,measurements]
   nb<-nrow(dataset)
 
   aaaa<-lapply(1:(length(measurements)-1),function(i)
