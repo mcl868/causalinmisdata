@@ -52,9 +52,10 @@ out<-list()
 
   coef<-sapply(1:(nb.effects+1),function(i)Estimates[i+1,]-Estimates[i,])
 
-  out$coef<-matrix(coef,nrow=1)
-  rownames(out$coef)<-"Est."
-  colnames(out$coef)<-c("dir",paste0("indir_M",c(1:nb.effects)))
+  out$coef<-matrix(c(coef,sum(coef)),nrow=1)
+  rownames(out$coef)<-"Est"
+  rownames(out$coef)<-c("dir",if(outpoints$nb.effects>0)paste0("indir_M",c(1:outpoints$nb.effects)),
+                        "overall")
 
   out$mmodels<-mmodels
   out$N<-nrow(data)
