@@ -34,6 +34,7 @@ seq.mediator.formula<-function(mmodels, exposure, int, data, complete = FALSE, .
     for(iii_ in 1:len.m.mod){
       confounderexposure<-data
       eval(parse(text=paste0("confounderexposure$",exposure,"<-",EXPOmat[[ii_]][iii_,])))
+      eval(parse(text=paste0("confounderexposure$",exposure,"[is.na(data$",exposure,")]<-NA")))
         mvalues<-predict(glm(mmodels[[iii_]], data = data),type="response",newdata=confounderexposure)
         eval(parse(text=paste0("data$model",iii_,"<-mvalues")))}
       rm("confounderexposure")

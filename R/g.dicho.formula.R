@@ -17,6 +17,7 @@ g.dicho.formula<-function(mmodels, exposure, data, complete = FALSE, ...){
   for(j in 1:(2^len.expo)){
     confounderexposure<-data
     eval(parse(text=paste0("confounderexposure$",exposure,"<-",EXPOmat[j,])))
+    eval(parse(text=paste0("confounderexposure$",exposure,"[is.na(data$",exposure,")]<-NA")))
     for(ii_ in 1:len.m.mod){
       mvalues<-predict(glm(mmodels[[ii_]], data = data),type="response",newdata=confounderexposure)
       eval(parse(text=paste0("data$model",ii_,"<-mvalues")))
