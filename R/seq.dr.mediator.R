@@ -60,5 +60,5 @@ out<-list()
   out$exposure<-exposure
   out$augList<-augList
 
-  attr(out, "class")<-"seqmediator"
+  attr(out, "class")<-"seqdrmediator"
   return(out)}
