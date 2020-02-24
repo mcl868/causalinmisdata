@@ -31,13 +31,13 @@ monotone.pattern<-function(measurements, data, id=NULL, transform=TRUE, threshol
   if(transform){
     out$data<-dataset
     out$transformnb<-if("YES" %in% dataset$transform){c(1:nb)[dataset$transform=="YES"]} else {0}
-    out$tableC<-table(dataset$C)
-    out$tableCpercent<-(table(dataset$C)/nb)
+    out$tableC<-c(table(dataset$C),sum(table(dataset$C)))
+    out$tableCpercent<-(out$tableC/nb)
     out$transform<-transform
     out$threshold<-threshold
     out$datasetredu<-datasetredu
-    out$tableCredu<-table(datasetredu$C)
-    out$tableCpercentredu<-(table(datasetredu$C)/nrow(datasetredu))
+    out$tableCredu<-c(table(datasetredu$C),sum(table(datasetredu$C)))
+    out$tableCpercentredu<-(out$tableCredu/nrow(datasetredu))
   } else {
     out$data<-datasetOrg
     out$nonmonotone<-c(1:nb)[dataset$transform=="YES"]
