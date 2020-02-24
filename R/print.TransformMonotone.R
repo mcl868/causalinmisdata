@@ -3,7 +3,7 @@ print.TransformMonotone<-function(x, digits=3, ...){
   rm(x)
   if(inherits(object,"TransformMonotone")){
     
-  if(nrow(a$data)==nrow(a$datasetredu)){
+  if(nrow(object$data)==nrow(object$datasetredu)){
     cat("Missing pattern is monotone and the number of observations:\n")
     print(object$tableC)
     cat("Percents of observations:\n")
