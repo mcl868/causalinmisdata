@@ -33,7 +33,6 @@ monotone.pattern<-function(measurements, data, id=NULL, transform=TRUE, threshol
     out$transformnb<-if("YES" %in% dataset$transform){c(1:nb)[dataset$transform=="YES"]} else {0}
     out$tableC<-c(table(dataset$C),sum(table(dataset$C)))
     out$tableCpercent<-(out$tableC/nb)
-    out$transform<-transform
     out$threshold<-threshold
     out$datasetredu<-datasetredu
     out$tableCredu<-c(table(datasetredu$C),sum(table(datasetredu$C)))
