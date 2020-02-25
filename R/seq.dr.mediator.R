@@ -65,5 +65,5 @@ out<-list()
   out$count<-probdataobject$count
   out$CoefList<-probdataobject$CoefList
 
-  attr(out, "class")<-"seqdrmediator"
+  attr(out, "class")<-"seqmediator"
   return(out)}
