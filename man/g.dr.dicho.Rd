@@ -12,25 +12,27 @@ g.dr.dicho(mmodels, exposure, covariates, pattern, regList, data, aug = NULL, ..
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{mmodels}{
-%%     ~~Describe \code{x} here~~
+\item{mmodels}{
+Models corresponding to response.
 }
-  \item{exposure}{
-%%     ~~Describe \code{x} here~~
+\item{exposure}{
+The time-varying exposure.
 }
-  \item{covariates}{
-%%     ~~Describe \code{x} here~~
+\item{covariates}{
+The ordered sequence of the variables of the interest without the response.
 }
-  \item{pattern}{
-%%     ~~Describe \code{x} here~~
+\item{regList}{
+The list consist of the models to estimate the probabilities for the missingness in data.
+See the function missing.pattern.
 }
-  \item{regList}{
-%%
+\item{augList}{
+The list consist of the models of the Augmentations space.
+All the models are linear by default (augList=NULL)
 }
-  \item{data}{
-%%
+\item{data}{
+Data.
 }
-  \item{aug}{
+\item{...}{
 %%
 }
 }
@@ -38,6 +40,28 @@ g.dr.dicho(mmodels, exposure, covariates, pattern, regList, data, aug = NULL, ..
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+\item{ExpectEstimate}{
+The expected value of the potential outcome.
+}
+\item{coef}{
+The coefficients in marginal strucktural model.
+}
+\item{mmodels}{
+The mmodels that have been used for modeling data.
+}
+\item{N}{
+The sample size of data.
+}
+\item{NCC}{
+The sample size of complete cases of data. In case of no missing values *NCC* is equal to *N*.
+}
+\item{exposure}{
+The exposure of the analysis.
+}
+\item{augList}{
+The list consist of the models of the Augmentations space.
+All the models are linear by default (augList=NULL)
+}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -60,7 +84,9 @@ Thomas Maltesen
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-dd
+\dontrun{
+p<-function(x)exp(x)/(1+exp(x))
+}
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
