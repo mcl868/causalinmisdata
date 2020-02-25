@@ -16,17 +16,23 @@ This package requires additional three packages
 and
 [gtools](https://cran.r-project.org/web/packages/gtools/index.html).
 
+This package makes it possible to do causal inference in R and
+it is possible to have data that are not fully observed.
+Data are allow to a missing observations that follow a monotone pattern.
+The package solves the issues to utilizes data better and to estimate an unbiased estimate.
 Robins [1] defines the g-formula given by
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." title="E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_T=\overline{a}_T, \overline{L}_T=\overline{l}_T) \prod_{t=0}^Tf_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t." /></a>
 
+The example below shows how to use the package.
+
 ## The package contains following functions
-- g.dicho
-- seq.mediator
+- g.dicho (The estimator for the g-formula that utilizes data only complete cases)
+- seq.mediator (The estimator for the sequential mediation that utilizes data only complete cases)
 - missing.pattern
 - prob.of.missing
-- g.dr.dicho
-- seq.dr.mediator
+- g.dr.dicho (The estimator for the g-formula that utilizes data with missing observations)
+- seq.dr.mediator (The estimator for the sequential mediation that utilizes data with missing observations)
 - monotone.pattern
 
 ### g.dicho
@@ -241,6 +247,9 @@ pattern. (If *transform=FALSE*)
 For further information about the function write *?monotone.pattern* in r.
 
 ## Example with three exposures in the presence of time-dependent confounding
+The directed acyclic graph (DAG) for the data is
+
+![](Images/dag.png)
 
 Load the R-package into R.
 ```markdown
@@ -281,7 +290,8 @@ Simulate data with three exposure in the presence of time-dependent confounding 
 +
 +   Y<-2*L0+3*A0+1*L1+2*A1-2*L2+5*A2+L2*A2+rnorm(NN)
 +
-+   DataSetList[[iiii]]<-data.frame(L0, L1, L2, A0, A1, A2, Y);rm(list=c("L0","L1","L2","A0","A1","A2","Y"))}
++   DataSetList[[iiii]]<-data.frame(L0, L1, L2, A0, A1, A2, Y)
++   rm(list=c("L0","L1","L2","A0","A1","A2","Y"))}
 > rm("iiii")
 
 ```
@@ -289,27 +299,27 @@ Simulate the monotone missing pattern in the data.
 ```markdown
 > DataSetListNA<-list()
 > for(iiii in 1:loop){
-+   REMOVE1<-with(DataSetList[[iiii]],1*(runif(nrow(DataSetList[[iiii]]),0,1)<=p(-3.2-1.9*L0)));sum(REMOVE1)
++   REMOVE1<-with(DataSetList[[iiii]],1*(runif(nrow(DataSetList[[iiii]]),0,1)<=p(-3.2-1.9*L0)))
 +   updata1<-DataSetList[[iiii]][REMOVE1==1,];upd1<-DataSetList[[iiii]][REMOVE1==0,]
 +   updata1[,c("A0","L1","A1","L2","A2","Y")]<-NA
 +
-+   REMOVE2<-with(upd1,1*(runif(nrow(upd1),0,1)<=p(-3.5-1.7*L0+1.9*A0)));sum(REMOVE2)
++   REMOVE2<-with(upd1,1*(runif(nrow(upd1),0,1)<=p(-3.5-1.7*L0+1.9*A0)))
 +   updata2<-upd1[REMOVE2==1,];upd2<-upd1[REMOVE2==0,]
 +   updata2[,c("L1","A1","L2","A2","Y")]<-NA
 +
-+   REMOVE3<-with(upd2,1*(runif(nrow(upd2),0,1)<=p(-3.1-1.9*L0+1.9*A0+1.5*L1)));sum(REMOVE3)
++   REMOVE3<-with(upd2,1*(runif(nrow(upd2),0,1)<=p(-3.1-1.9*L0+1.9*A0+1.5*L1)))
 +   updata3<-upd2[REMOVE3==1,];upd3<-upd2[REMOVE3==0,]
 +   updata3[,c("A1","L2","A2","Y")]<-NA
 +
-+   REMOVE4<-with(upd3,1*(runif(nrow(upd3),0,1)<=p(-3.7-1.6*L0+1.9*A0+1.5*L1+1.5*A1)));sum(REMOVE4)
++   REMOVE4<-with(upd3,1*(runif(nrow(upd3),0,1)<=p(-3.7-1.6*L0+1.9*A0+1.5*L1+1.5*A1)))
 +   updata4<-upd3[REMOVE4==1,];upd4<-upd3[REMOVE4==0,]
 +   updata4[,c("L2","A2","Y")]<-NA
 +
-+   REMOVE5<-with(upd4,1*(runif(nrow(upd4),0,1)<=p(-3.8-1.6*L0+1.9*A0+1.5*L1+1.5*A1-L2)));sum(REMOVE5)
++   REMOVE5<-with(upd4,1*(runif(nrow(upd4),0,1)<=p(-3.8-1.6*L0+1.9*A0+1.5*L1+1.5*A1-L2)))
 +   updata5<-upd4[REMOVE5==1,];upd5<-upd4[REMOVE5==0,]
 +   updata5[,c("A2","Y")]<-NA
 +
-+   REMOVE6<-with(upd5,1*(runif(nrow(upd5),0,1)<=p(-4-1.6*L0+1.9*A0+1.5*L1+1.5*A1-L2+1.2*A2+1.2*A1*A2)));sum(REMOVE6)
++   REMOVE6<-with(upd5,1*(runif(nrow(upd5),0,1)<=p(-4-1.6*L0+1.9*A0+1.5*L1+1.5*A1-L2+1.2*A2+1.2*A1*A2)))
 +   updata6<-upd5[REMOVE6==1,];updata7<-upd5[REMOVE6==0,]
 +   updata6[,c("Y")]<-NA
 +
@@ -340,9 +350,10 @@ Simulate the nonmonotone missing pattern in the data.
 
 ```
 
+## The models for the analysis
 Define the models for the analysis.
-> regList<-list()
 ```markdown
+> regList<-list()
 > regList[[1]]<-"L0"
 > regList[[2]]<-"L0 + A0"
 > regList[[3]]<-"L0 + A0 + L1"
@@ -356,7 +367,7 @@ Define the models for the analysis.
 
 ```
 
-### Use the two functions  *g.dicho* and  *g.dr.dicho*
+## The use of the two functions  *missing.pattern* and *prob.of.missing*
 ```markdown
 > DataSetCount<-Coef1List<-Coef2List<-Coef3List<-Coef4List<-Coef5List<-Coef6List<-list()
 > for(iiii in 1:loop){
@@ -402,8 +413,8 @@ Define the models for the analysis.
 
 ```
 
-### Use the two functions  *g.dicho* and  *g.dr.dicho*
-Use the *g.dicho* function on data. It applies both for full data and
+## The use of the two functions  *g.dicho* and  *g.dr.dicho*
+The use of the *g.dicho* function on data. It applies both for full data and
 data with missing observations.
 ```markdown
 > estimationSG<-lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
@@ -423,7 +434,7 @@ Est.      -0.249 6.443 3.555 5.743     0 -2.551 -0.782        0
 
 ```
 
-Use the *g.dr.dicho* function on data. It applies only for full data with missing observations.
+The use of the *g.dr.dicho* function on data. It applies only for data with missing observations.
 ```markdown
 > estimationMis.SG<-lapply(1:loop,function(iiii) g.dr.dicho(mmodels=c(model1,model2,model3),
 +                                                           exposure=c("A0","A1","A2"),
@@ -439,7 +450,9 @@ Est.      -0.016 6.015  4 5.015     0 -2.004 -1.004        0
 Use the *g.dicho* function on data. It applies both for full data and
 data with missing observations.
 
-### Use the two functions  *seq.mediator* and  *seq.dr.mediator*
+## The use of the two functions  *seq.mediator* and  *seq.dr.mediator*
+The use of the *seq.mediator* function on data. It applies both for full data and
+data with missing observations.
 ```markdown
 > estimationSeqM.A0<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
 +                                                              exposure=c("A0","A1","A2"),
@@ -464,10 +477,8 @@ Est 1.994    2.002   3.996
 > round(listMean(estimationSeqM.A2),3)
       dir overall
 Est 5.002   5.002
-
-```
-
-```markdown
+>
+>
 > estimationSeqM.A0.NA<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
 +                                                                 exposure=c("A0","A1","A2"),
 +                                                                 int="A0",
@@ -493,7 +504,7 @@ Est 1.995     1.56   3.555
 Est 5.743   5.743
 
 ```
-
+The use of the *seq.dr.mediator* function on data. It applies only for data with missing observations.
 ```markdown
 > estimationMis.SeqM.A0<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
 +                                                                     exposure=c("A0","A1","A2"),
@@ -526,7 +537,10 @@ Est 1.995    2.005       4
 Est 5.015   5.015
 
 ```
-
+## The use of the two functions *monotone.pattern*
+In case of the data have missing observations following a nonmonotone and you want to make a
+sensitive analysis.
+The *monotone.pattern* will helps to transform the pattern from nonmonotone to monotone.
 ```markdown
 > DataSetnonMonotone.extra<-
 + lapply(1:loop,function(iiii)
@@ -654,43 +668,49 @@ Est 5.015   5.015
 
 ```
 
+It is now possible to analysis data with the two functions
+*g.dr.dicho* and *seq.dr.mediator*.
 ```markdown
-> estimationMis.SG.e<-lapply(1:loop,function(iiii) g.dr.dicho(mmodels=c(model1,model2,model3),
-+                                                             exposure=c("A0","A1","A2"),
-+                                                             data=DataSetnonMonotone.extra[[iiii]]$data,
-+                                                             covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                             regList=regList)$coef)
+> estimationMis.SG.e<-
++ lapply(1:loop,function(iiii) g.dr.dicho(mmodels=c(model1,model2,model3),
++                                         exposure=c("A0","A1","A2"),
++                                         data=DataSetnonMonotone.extra[[iiii]]$data,
++                                         covariates=c("L0","A0","L1","A1","L2","A2"),
++                                         regList=regList)$coef)
 > round(listMean(estimationMis.SG.e),3)
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
 Est.      -0.013 5.992 3.982 5.006     0 -1.984 -1.002        0
 >
 >
-> estimationMis.SeqM.A0.e<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                       exposure=c("A0","A1","A2"),
-+                                                                       int="A0",
-+                                                                       data=DataSetnonMonotone.extra[[iiii]]$data,
-+                                                                       covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                       regList=regList)$coef)
+> estimationMis.SeqM.A0.e<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A0",
++                                              data=DataSetnonMonotone.extra[[iiii]]$data,
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A0.e),3)
       dir indir_M1 indir_M2 overall
 Est 3.024    0.982    1.987   5.992
 >
-> estimationMis.SeqM.A1.e<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                       exposure=c("A0","A1","A2"),
-+                                                                       int="A1",
-+                                                                       data=DataSetnonMonotone.extra[[iiii]]$data,
-+                                                                       covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                       regList=regList)$coef)
+> estimationMis.SeqM.A1.e<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A1",
++                                              data=DataSetnonMonotone.extra[[iiii]]$data,
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A1.e),3)
      dir indir_M1 overall
 Est 1.98    2.002   3.982
 >
-> estimationMis.SeqM.A2.e<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                       exposure=c("A0","A1","A2"),
-+                                                                       int="A2",
-+                                                                       data=DataSetnonMonotone.extra[[iiii]]$data,
-+                                                                       covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                       regList=regList)$coef)
+> estimationMis.SeqM.A2.e<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A2",
++                                              data=DataSetnonMonotone.extra[[iiii]]$data,
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A2.e),3)
       dir overall
 Est 5.006   5.006
