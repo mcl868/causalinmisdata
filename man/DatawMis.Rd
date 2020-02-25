@@ -2,7 +2,7 @@
 \alias{DatawMis}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Det data DatawMis
+Data with monotone missingness and nonmonotone missingness.
 }
 \arguments{
 \item{L0}{
@@ -30,6 +30,7 @@ The outcome.
 \description{
 The data by the name "DataSetFull" contain the data with full data.
 The data by the name "DataSetMonotone" contain the data with missing observation following a monotone pattern.
+The missigness follow coarsening at random.
 The data by the name "DataSetnonMonotone" contain the data with missing observation following a nonmonotone pattern.
 }
 \usage{

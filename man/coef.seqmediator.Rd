@@ -2,10 +2,10 @@
 \alias{coef.seqmediator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-haed
+To obtain the coefficients from the seq.mediator and seq.dr.mediator
 }
 \description{
-Head call for an object from \code{seq.mediator}.
+Coef call for an object from \code{seq.mediator}.
 }
 \usage{
 ## S3 method for class 'seq.mediator'

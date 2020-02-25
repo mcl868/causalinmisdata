@@ -2,10 +2,10 @@
 \alias{coef.ProbToData}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-haed
+To obtain the coefficients from the prob.of.missing
 }
 \description{
-Head call for an object from \code{prob.of.missing}.
+Coef call for an object from \code{prob.of.missing}.
 }
 \usage{
 ## S3 method for class 'prob.of.missing'

@@ -2,7 +2,7 @@
 \alias{coef.gcompdicho}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Coef
+To obtain the coefficients from the g.dicho and g.dr.dicho
 }
 \description{
 Coef call for an object from \code{g.dicho}.
