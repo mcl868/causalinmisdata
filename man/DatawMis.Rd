@@ -1,57 +1,62 @@
-\name{seq.mediator}
-\alias{seq.mediator}
+\name{DatawMis}
+\alias{DatawMis}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The augmented inverse probability weighting
+Det data DatawMis
+}
+\arguments{
+\item{L0}{
+Baseline measurement.
+}
+\item{A0}{
+The exposure after baseline measurement.
+}
+\item{L1}{
+Confounder for the two exposure A1 and A2.
+}
+\item{A1}{
+The exposure at time 1.
+}
+\item{L2}{
+Confounder for the exposure A2.
+}
+\item{A2}{
+The exposure at time 2.
+}
+\item{Y}{
+The outcome.
+}
 }
 \description{
-The function solves the estimator to
-gfg.
+The data by the name "DataSetFull" contain the data with full data.
+The data by the name "DataSetMonotone" contain the data with missing observation following a monotone pattern.
+The data by the name "DataSetnonMonotone" contain the data with missing observation following a nonmonotone pattern.
 }
 \usage{
-seq.mediator(mmodels, exposure, int, data, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{mmodels}{
-The models correspond to the models the outcome.
-}
-  \item{exposure}{
-The exposure.
-}
-  \item{int}{
-The exposure of interest for the mediation analysis.
-}
-\item{data}{
-Data.
-}
-\item{\dots}{
+%  \item{mmodels}{
+%The models correspond to the models the outcome.
+%}
+%  \item{exposure}{
+%The exposure.
+%}
+%  \item{int}{
+%The exposure of interest for the mediation analysis.
+%}
+%\item{data}{
+%Data.
+%}
+%\item{\dots}{
 %%
-}
+%}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-\item{mmodels}{
-The mmodels that have been used for modeling data.
-}
-\item{coef}{
-The coefficients from the analysis of the direct effect and the indirect effects.
-}
-\item{exposure}{
-The exposure of the analysis.
-}
-\item{N}{
-The sample size of data.
-}
-\item{NCC}{
-The sample size of complete cases of data. In case of no missing values NCC is equal to N.
-}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
 }
 \references{
 put references to the literature/web site here

@@ -20,10 +20,10 @@ The models correspond to the models the outcome.
 The exposure.
 }
   \item{int}{
-The exposure of interest for the mediation analysis.
+%%
 }
 \item{data}{
-Data.
+%%
 }
 \item{\dots}{
 %%
@@ -35,21 +35,7 @@ Data.
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-\item{mmodels}{
-The mmodels that have been used for modeling data.
-}
-\item{coef}{
-The coefficients from the analysis of the direct effect and the indirect effects.
-}
-\item{exposure}{
-The exposure of the analysis.
-}
-\item{N}{
-The sample size of data.
-}
-\item{NCC}{
-The sample size of complete cases of data. In case of no missing values NCC is equal to N.
-}
+%%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
