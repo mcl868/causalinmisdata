@@ -18,10 +18,10 @@ g.dicho(mmodels, exposure, data, ...)
 The models correspond to the models the outcome.
 }
   \item{exposure}{
-The exposure.
+The time-varying exposure.
 }
   \item{data}{
-%%
+Data.
 }
 }
 \details{
@@ -30,8 +30,24 @@ The exposure.
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
+\item{coef}{
+The coefficients in marginal strucktural model.
+}
+\item{ExpectEstimate}{
+The expected value of the potential outcome.
+}
+\item{mmodels}{
+The mmodels that have been used for modeling data.
+}
+\item{exposure}{
+The exposure of the analysis.
+}
+\item{N}{
+The sample size of data.
+}
+\item{NCC}{
+The sample size of complete cases of data. In case of no missing values NCC is equal to N
+}
 %% ...
 }
 \references{
