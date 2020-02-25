@@ -18,7 +18,6 @@ print.seqmediator<-function(x, digits=3, ...){
       cat("Used",object$NCC,"observations to estimation and",with(object,N-NCC),"records have been deleted.\n")
     }else{
       cat("Used",object$NCC,"observations to estimation.\n")}
-    }
     
   }
 }
