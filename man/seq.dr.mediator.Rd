@@ -1,12 +1,11 @@
-\name{seq.mediator}
-\alias{seq.mediator}
+\name{seq.dr.mediator}
+\alias{seq.dr.mediator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The augmented inverse probability weighting
+The estimator for the sequential mediation that utilizes data with missing observations
 }
 \description{
-The function solves the estimator to
-gfg.
+
 }
 \usage{
 seq.dr.mediator(mmodels, exposure, int, covariates, regList, augList=NULL, data, ...)

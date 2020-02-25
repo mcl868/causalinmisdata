@@ -1,20 +1,20 @@
-\name{print.gcompdicho}
-\alias{print.gcompdicho}
+\name{print.seqmediator}
+\alias{print.seqmediator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Prints call
 }
 \description{
-Prints call for an object from \code{g.dicho} or \code{g.dr.dicho}.
+Prints call for an object from \code{seq.mediator} and \code{seq.dr.mediator}.
 }
 \usage{
-## S3 method for class 'g.dicho' or 'g.dr.dicho'
+## S3 method for class 'seq.mediator' and 'seq.dr.mediator'
 print(x, digits=3, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-An \code{g.dicho} or \code{g.dr.dicho} object.
+An \code{seq.mediator} or \code{seq.dr.mediator} object.
 }
   \item{digits}{
 To decide how many digits the object has to return with.
@@ -46,7 +46,7 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link{g.dicho}} or \code{\link{g.dr.dicho}}.%% ~~objects to See Also as \code{\link{help}}, ~~~
+See also \code{\link{seq.mediator}} or \code{\link{seq.dr.mediator}}
 }
 \examples{
 

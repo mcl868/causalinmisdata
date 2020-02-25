@@ -2,10 +2,10 @@
 \alias{prob.of.missing}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-prob.of.missing
+Estimate the probabilities for stopping observering additional vaiables
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+
 }
 \usage{
 prob.of.missing(object, regression, list.out = TRUE, completecase = FALSE, regList, order = NULL, ...) 

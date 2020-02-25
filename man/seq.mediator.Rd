@@ -2,11 +2,10 @@
 \alias{seq.mediator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The augmented inverse probability weighting
+The estimator for the sequential mediation that utilizes data only complete cases
 }
 \description{
-The function solves the estimator to
-gfg.
+
 }
 \usage{
 seq.mediator(mmodels, exposure, int, data, ...)

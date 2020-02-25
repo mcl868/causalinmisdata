@@ -2,10 +2,10 @@
 \alias{missing.pattern}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-missing.pattern
+The function missing.pattern sort the records for the function 'prob.of.missing'
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+
 }
 \usage{
 missing.pattern(response, covariates, data, pattern, ...)

@@ -2,12 +2,10 @@
 \alias{g.dicho}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-The augmented inverse probability weighting
+The estimator for the g-formula that utilizes data only complete cases
 }
 \description{
-The function solves the estimator to
 
-gfg.
 }
 \usage{
 g.dicho(mmodels, exposure, data, ...)

@@ -2,7 +2,7 @@
 \alias{head.ProbToData}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Haed
+Haed of the data with probabilities from the function 'prob.of.missing'
 }
 \description{
 Head call for an object from \code{prob.of.missing}.

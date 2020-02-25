@@ -2,10 +2,10 @@
 \alias{monotone.pattern}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-monotone.pattern
+Transform data with nonmontone pattern to monotone pattern with missing observations
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+
 }
 \usage{
 monotone.pattern(measurements, dataset, id=NULL, transform=TRUE, threshold=0.05, ...)

@@ -2,7 +2,7 @@
 \alias{head.TransformMonotone}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Haed
+Haed of the data from the function 'monotone.pattern'
 }
 \description{
 Head call for an object from \code{monotone.pattern}.
