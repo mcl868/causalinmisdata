@@ -2,20 +2,6 @@
 
 [Go back to homepage](https://mcl868.github.io/software.html)
 
-To install the package from GitHub:
-```markdown
-install.packages("devtools")
-devtools::install_github("mcl868/causalinmisdata")
-```
-If the package *devtools* is already installed then it is **not** necessary to use the command
-*install.packages("devtools")*.
-
-This package requires additional three packages
-[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md),
-[combinat](https://cran.r-project.org/web/packages/combinat/index.html)
-and
-[gtools](https://cran.r-project.org/web/packages/gtools/index.html).
-
 This package makes it possible to do causal inference in R and
 it is possible to have data that are not fully observed.
 Data are allow to a missing observations that follow a monotone pattern.
@@ -24,16 +10,28 @@ Robins [1] defines the g-formula given by
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." target="_blank"><img src="https://latex.codecogs.com/gif.latex?E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}}&space;E(Y\mid&space;\overline{A}_T=\overline{a}_T,&space;\overline{L}_T=\overline{l}_T)&space;\prod_{t=0}^Tf_{L_t\mid&space;\overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid&space;\overline{l}_{t-1},\overline{a}_{t-1})&space;d\overline{l}_t." title="E\left(Y^{\overline{a}_T}\right)=\int_{\mathcal{L}} E(Y\mid \overline{A}_T=\overline{a}_T, \overline{L}_T=\overline{l}_T) \prod_{t=0}^Tf_{L_t\mid \overline{L}_{t-1},\overline{A}_{t-1}}(l_t\mid \overline{l}_{t-1},\overline{a}_{t-1}) d\overline{l}_t." /></a>
 
+To install the package from GitHub then:
+```markdown
+install.packages("devtools")
+devtools::install_github("mcl868/causalinmisdata")
+```
+If the package *devtools* is already installed then it is **not** necessary to use the command
+*install.packages("devtools")*.
+This package requires additional three packages
+[HelpPackage](https://github.com/mcl868/HelpPackage/blob/master/README.md),
+[combinat](https://cran.r-project.org/web/packages/combinat/index.html)
+and
+[gtools](https://cran.r-project.org/web/packages/gtools/index.html).
 The example below shows how to use the package.
 
 ## The package contains following functions
 - g.dicho (The estimator for the g-formula that utilizes data only complete cases)
 - seq.mediator (The estimator for the sequential mediation that utilizes data only complete cases)
-- missing.pattern
-- prob.of.missing
+- missing.pattern (Help function)
+- prob.of.missing (Help function)
 - g.dr.dicho (The estimator for the g-formula that utilizes data with missing observations)
 - seq.dr.mediator (The estimator for the sequential mediation that utilizes data with missing observations)
-- monotone.pattern
+- monotone.pattern (Help function)
 
 ### g.dicho
 The estimator for the g-formula for binary exposures and continuous outcomes
@@ -417,16 +415,18 @@ Define the models for the analysis.
 The use of the *g.dicho* function on data. It applies both for full data and
 data with missing observations.
 ```markdown
-> estimationSG<-lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
-+                                                    exposure=c("A0","A1","A2"),
-+                                                    data=DataSetFull[[iiii]])$coef)
+> estimationSG<-
++ lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
++                                      exposure=c("A0","A1","A2"),
++                                      data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSG),3)
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
 Est.      -0.007 6.009 3.996 5.002     0 -2.004 -1.005        0
 >
-> estimationSG.NA<-lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
-+                                                       exposure=c("A0","A1","A2"),
-+                                                       data=DataSetMonotone[[iiii]])$coef)
+> estimationSG.NA<-
++ lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
++                                      exposure=c("A0","A1","A2"),
++                                      data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSG.NA),3)
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
 Est.      -0.249 6.443 3.555 5.743     0 -2.551 -0.782        0
@@ -436,11 +436,12 @@ Est.      -0.249 6.443 3.555 5.743     0 -2.551 -0.782        0
 
 The use of the *g.dr.dicho* function on data. It applies only for data with missing observations.
 ```markdown
-> estimationMis.SG<-lapply(1:loop,function(iiii) g.dr.dicho(mmodels=c(model1,model2,model3),
-+                                                           exposure=c("A0","A1","A2"),
-+                                                           data=DataSetMonotone[[iiii]],
-+                                                           covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                           regList=regList)$coef)
+> estimationMis.SG<-
++ lapply(1:loop,function(iiii) g.dr.dicho(mmodels=c(model1,model2,model3),
++                                         exposure=c("A0","A1","A2"),
++                                         data=DataSetMonotone[[iiii]],
++                                         covariates=c("L0","A0","L1","A1","L2","A2"),
++                                         regList=regList)$coef)
 > round(listMean(estimationMis.SG),3)
      (Intercept)    A0 A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
 Est.      -0.016 6.015  4 5.015     0 -2.004 -1.004        0
@@ -454,51 +455,57 @@ data with missing observations.
 The use of the *seq.mediator* function on data. It applies both for full data and
 data with missing observations.
 ```markdown
-> estimationSeqM.A0<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                              exposure=c("A0","A1","A2"),
-+                                                              int="A0",
-+                                                              data=DataSetFull[[iiii]])$coef)
+> estimationSeqM.A0<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A0",
++                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A0),3)
       dir indir_M1 indir_M2 overall
 Est 3.016    0.985    2.008   6.009
 >
-> estimationSeqM.A1<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                              exposure=c("A0","A1","A2"),
-+                                                              int="A1",
-+                                                              data=DataSetFull[[iiii]])$coef)
+> estimationSeqM.A1<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A1",
++                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A1),3)
       dir indir_M1 overall
 Est 1.994    2.002   3.996
 >
-> estimationSeqM.A2<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                              exposure=c("A0","A1","A2"),
-+                                                              int="A2",
-+                                                              data=DataSetFull[[iiii]])$coef)
+> estimationSeqM.A2<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A2",
++                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A2),3)
       dir overall
 Est 5.002   5.002
 >
 >
-> estimationSeqM.A0.NA<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                                 exposure=c("A0","A1","A2"),
-+                                                                 int="A0",
-+                                                                 data=DataSetMonotone[[iiii]])$coef)
+> estimationSeqM.A0.NA<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A0",
++                                           data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSeqM.A0.NA),3)
       dir indir_M1 indir_M2 overall
 Est 3.015     1.81    1.618   6.443
 >
-> estimationSeqM.A1.NA<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                                 exposure=c("A0","A1","A2"),
-+                                                                 int="A1",
-+                                                                 data=DataSetMonotone[[iiii]])$coef)
+> estimationSeqM.A1.NA<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A1",
++                                           data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSeqM.A1.NA),3)
       dir indir_M1 overall
 Est 1.995     1.56   3.555
 >
-> estimationSeqM.A2.NA<-lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
-+                                                                 exposure=c("A0","A1","A2"),
-+                                                                 int="A2",
-+                                                                 data=DataSetMonotone[[iiii]])$coef)
+> estimationSeqM.A2.NA<-
++ lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
++                                           exposure=c("A0","A1","A2"),
++                                           int="A2",
++                                           data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSeqM.A2.NA),3)
       dir overall
 Est 5.743   5.743
@@ -506,32 +513,35 @@ Est 5.743   5.743
 ```
 The use of the *seq.dr.mediator* function on data. It applies only for data with missing observations.
 ```markdown
-> estimationMis.SeqM.A0<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                     exposure=c("A0","A1","A2"),
-+                                                                     int="A0",
-+                                                                     data=DataSetMonotone[[iiii]],
-+                                                                     covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                     regList=regList)$coef)
+> estimationMis.SeqM.A0<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A0",
++                                              data=DataSetMonotone[[iiii]],
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A0),3)
       dir indir_M1 indir_M2 overall
 Est 3.015    0.986    2.014   6.015
 >
-> estimationMis.SeqM.A1<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                     exposure=c("A0","A1","A2"),
-+                                                                     int="A1",
-+                                                                     data=DataSetMonotone[[iiii]],
-+                                                                     covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                     regList=regList)$coef)
+> estimationMis.SeqM.A1<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A1",
++                                              data=DataSetMonotone[[iiii]],
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A1),3)
       dir indir_M1 overall
 Est 1.995    2.005       4
 >
-> estimationMis.SeqM.A2<-lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
-+                                                                     exposure=c("A0","A1","A2"),
-+                                                                     int="A2",
-+                                                                     data=DataSetMonotone[[iiii]],
-+                                                                     covariates=c("L0","A0","L1","A1","L2","A2"),
-+                                                                     regList=regList)$coef)
+> estimationMis.SeqM.A2<-
++ lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
++                                              exposure=c("A0","A1","A2"),
++                                              int="A2",
++                                              data=DataSetMonotone[[iiii]],
++                                              covariates=c("L0","A0","L1","A1","L2","A2"),
++                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A2),3)
       dir overall
 Est 5.015   5.015
