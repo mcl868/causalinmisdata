@@ -1,25 +1,23 @@
-\name{parametercausal}
-\alias{parametercausal}
+\name{coef.gcompdicho}
+\alias{coef.gcompdicho}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-parametercausal
+Coef
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+Coef call for an object from \code{g.dicho}.
 }
 \usage{
-parametercausal(expo, estoutcome, ...)
+## S3 method for class 'g.dicho'
+print(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{response}{
-The outcome variable in data. Format is a character.
+\item{x}{
+An \code{g.dicho} object.
 }
-  \item{expo}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{estoutcome}{
-%%     ~~Describe \code{x} here~~
+\item{\dots}{
+For further arguments for the \code{print}-function.
 }
 }
 \details{
@@ -33,7 +31,7 @@ The outcome variable in data. Format is a character.
 %% ...
 }
 \references{
-jjj
+%% ~put references to the literature/web site here ~
 }
 \author{
 Thomas Maltesen
@@ -45,10 +43,9 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See also \code{\link{g.dicho}}.
 }
 \examples{
-dd
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

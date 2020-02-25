@@ -2,19 +2,19 @@
 \alias{head.DataToPattern}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-haed
+Haed
 }
 \description{
-Head call for an object from \code{prob.of.missing}.
+Head call for an object from \code{missing.pattern}.
 }
 \usage{
-## S3 method for class 'prob.of.missing'
+## S3 method for class 'missing.pattern'
 print(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-An \code{prob.of.missing} object.
+An \code{missing.pattern} object.
 }
   \item{\dots}{
 For further arguments for the \code{print}-function.
@@ -43,10 +43,9 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See \code{\link{missing.pattern}}.
 }
 \examples{
-Look at \code{\link{prob.of.missing}}.
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

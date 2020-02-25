@@ -1,19 +1,23 @@
-\name{combiexpo}
-\alias{combiexpo}
+\name{coef.seqmediator}
+\alias{coef.seqmediator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-combiexpo
+haed
 }
 \description{
-  A concise (1-5 lines) description of what the function does. 
+Head call for an object from \code{seq.mediator}.
 }
 \usage{
-combiexpo(expo, ...)
+## S3 method for class 'seq.mediator'
+print(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{expo}{
-%%     ~~Describe \code{x} here~~
+\item{x}{
+An \code{seq.mediator} object.
+}
+\item{\dots}{
+For further arguments for the \code{print}-function.
 }
 }
 \details{
@@ -27,7 +31,7 @@ combiexpo(expo, ...)
 %% ...
 }
 \references{
-jjj
+%% ~put references to the literature/web site here ~
 }
 \author{
 Thomas Maltesen
@@ -39,10 +43,10 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
+See also \code{\link{seq.mediator}}.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-dd
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

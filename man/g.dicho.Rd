@@ -48,7 +48,9 @@ The sample size of data.
 \item{NCC}{
 The sample size of complete cases of data. In case of no missing values NCC is equal to N
 }
-%% ...
+\item{...}{
+
+}
 }
 \references{
 put references to the literature/web site here
@@ -67,31 +69,26 @@ Thomas Maltesen
 }
 \examples{
 \dontrun{
-p<-function(x)exp(x)/(1+exp(x))
-
-L0<-rnorm(10000)
-A0<-1*(runif(10000,0,1)<=p(0.6*L0))
-
-L1<--A0+0.2*L0-1*A0*L0+rnorm(10000)
-A1<-1*(runif(10000,0,1)<=p(-1+1.6*A0+1.2*L1-0.8*L0-1.6*L1*A0))
-
-L2<--A1+1*L1-A0+1.2*L0+rnorm(10000)
-A2<-1*(runif(10000,0,1)<=p(1-0.8*L0+1.6*A0+1.2*L1+1.3*A1+0.5*L2+1.6*L1*A1))
-
-Y<-2*L0+3*A0+1*L1+2*A1-2*L2+5*A2+L2*A2+rnorm(10000)
-
-DataSet<-data.frame(L0, L1, L2, A0, A1, A2, Y)
-rm(list=c("L0","A0","L1","A1","L2","A2","Y"))
-
 model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
-model2 <- model1 ~ A1 + L1 + A0 + L0
-model3 <- model2 ~ A0 + L0 + A0*L0
+model2 <- L2 ~ A1 + L1 + A0 + L0
+model3 <- L1 ~ A0 + L0 + A0*L0
 
-g.aipw.dicho(mmodels=c(model1,model2,model3), 
-             exposure=c("A0","A1","A2"), 
-             data=DataSet)
+
+estimationSG<-lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
+                                                   exposure=c("A0","A1","A2"),
+                                                   data=DataSetFull[[iiii]])$coef)
+round(listMean(estimationSG),3)
+     (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
+Est.      -0.007 6.009 3.996 5.002     0 -2.004 -1.005        0
+
+
+estimationSG.NA<-lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
+                                                      exposure=c("A0","A1","A2"),
+                                                      data=DataSetMonotone[[iiii]])$coef)
+round(listMean(estimationSG.NA),3)
+     (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
+Est.      -0.249 6.443 3.555 5.743     0 -2.551 -0.782        0
 }
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

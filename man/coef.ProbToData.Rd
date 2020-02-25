@@ -13,10 +13,10 @@ print(x, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+\item{x}{
 An \code{prob.of.missing} object.
 }
-  \item{\dots}{
+\item{\dots}{
 For further arguments for the \code{print}-function.
 }
 }
@@ -43,10 +43,11 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
+See also \code{\link{prob.of.missing}}.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-Look at \code{\link{prob.of.missing}}.
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

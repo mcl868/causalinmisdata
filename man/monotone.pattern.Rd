@@ -12,35 +12,70 @@ monotone.pattern(measurements, dataset, id=NULL, transform=TRUE, threshold=0.05,
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{measurements}{
-The outcome variable in data. Format is a character.
+\item{measurements}{
+The ordered sequence of the variables of the interest including the outcome.
 }
-  \item{dataset}{
-%%     ~~Describe \code{x} here~~
+\item{data}{
+Data.
 }
-  \item{id}{
-%%     ~~Describe \code{x} here~~
+\item{id}{
+If data variable of id.
 }
-  \item{transform}{
-%%     ~~Describe \code{x} here~~
+\item{transform}{
+If it is equal to TRUE* then all records following a nonmontone are set
+to follow a monotone pattern.
+*If it is equal to FALSE* then all records following a nonmontone are remain the same.
 }
-  \item{threshold}{
-%%     ~~Describe \code{x} here~~
+\item{threshold}{
+Remove pattern of from the monoene missingness if the percent of specific records
+is below the threshold
+}
+\item{\dots}{
+
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{data}{
+Data.
+}
+\item{transformnb}{
+Contain the position of the record in data if the record follows a nonmontone
+pattern. (If \code{transform}=TRUE).
+}
+\item{tableC}{
+The number of the observed variables in integers. See the function **missing.pattern**.
+(If \code{transform}=TRUE).
+}
+\item{tableCpercent}{
+The percent of the observed variables.
+(If \code{transform}=TRUE).
+}
+\item{threshold}{
+The value of the threshold.
+(If \code{transform}=TRUE).
+}
+\item{datasetredu}{
+The records are removed from data if there are to few records of a specific pattern
+below the threshold.
+(If \code{transform}=TRUE).
+}
+\item{tableCredu}{
+The number of the observed variables in integers for the reduced data.
+See the function **missing.pattern**. (If *transform=TRUE*).
+}
+\item{tableCpercentredu}{
+The percent of the observed variables for the reduced data.
+(If \code{transform}=TRUE).
+}
+\item{nonmonotone}{
+Contain the position of the record in data if the record follows a nonmontone
+pattern. (If \code{transform}=FALSE)
+}
 }
 \references{
-Tsiatis, Anastasios A., A. A. (2006). Semiparametric theory and missing data. Springer series in statistics.
-Springer.
 }
 \author{
 Thomas Maltesen
@@ -52,11 +87,21 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See also \code{\link{DatawMis}}.
 }
 \examples{
-dd
+\dontrun{
+DataSetnonMonotone.extra<-
+lapply(1:loop,function(iiii)
+       monotone.pattern(measurements=c("L0","A0","L1","A1","L2","A2","Y"),
+                        data=DataSetnonMonotone[[iiii]],
+                        id=NULL,
+                        transform=TRUE,
+                        threshold=0.05))
 
+listMean(lapply(1:loop,function(iiii)length(DataSetnonMonotone.extra[[iiii]]$transformnb)))
+  926.57
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

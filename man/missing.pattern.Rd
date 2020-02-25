@@ -12,28 +12,38 @@ missing.pattern(response, covariates, data, pattern, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{response}{
-The outcome variable in data. Format is a character.
+\item{response}{
+The outcome variable of the interest.
 }
-  \item{covariates}{
-%%     ~~Describe \code{x} here~~
+\item{covariates}{
+The ordered sequence of the variables of the interest without the response.
 }
-  \item{data}{
-%%     ~~Describe \code{x} here~~
+\item{data}{
+Data.
 }
-  \item{pattern}{
-%%     ~~Describe \code{x} here~~
+\item{\dots}{
+
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{data}{
+The data of the chosen pattern of missingness (used in the function \code{\link{prob.of.missing}}).
+}
+\item{covariatesObj}{
+The ordered sequence of the variables of the interest (used in the function \code{\link{prob.of.missing}}).
+}
+\item{responseObj}{
+The outcome variable of the interest (used in the function \code{\link{prob.of.missing}}).
+}
+\item{count}{
+The number of the observed variables in integers.
+}
+\item{percent}{
+The percent of the observed variables.
+}
 }
 \references{
 Tsiatis, Anastasios A., A. A. (2006). Semiparametric theory and missing data. Springer series in statistics.
@@ -49,13 +59,11 @@ Thomas Maltesen
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+See \code{\link{prob.of.missing}}.
 }
 \examples{
-dd
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+%\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
+%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
