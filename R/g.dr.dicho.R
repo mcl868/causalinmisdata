@@ -56,5 +56,5 @@ out<-list()
   out$exposure<-exposure
   out$augList<-augList
 
-  attr(out, "class")<-"gcompdrdicho"
+  attr(out, "class")<-"gcompdicho"
   return(out)}
