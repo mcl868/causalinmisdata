@@ -271,7 +271,7 @@ Simulate data with three exposure in the presence of time-dependent confounding 
 ```markdown
 > p<-function(x)exp(x)/(1+exp(x))
 >
-> loop<-100
+> loop<-200
 > NN<-2000
 >
 > set.seed(3)
@@ -385,29 +385,29 @@ Define the models for the analysis.
 >
 > listMean(DataSetCount)
 
-      1       2       3       4       5       6     Inf     Sum
- 218.21  213.16  178.90  125.52  252.93  153.14  858.14 2000.00
+       1        2        3        4        5        6      Inf      Sum
+ 217.175  214.555  179.400  125.990  252.965  154.050  855.865 2000.000
 >
 > round(listMean(Coef1List),3)
 (Intercept)          L0
-     -3.181      -1.887
+     -3.211      -1.916
 > round(listMean(Coef2List),3)
 (Intercept)          L0          A0
-     -3.556      -1.716       1.940
+     -3.534      -1.720       1.921
 > round(listMean(Coef3List),3)
 (Intercept)          L0          A0          L1
-     -3.130      -1.915       1.918       1.518
+     -3.100      -1.901       1.900       1.503
 > round(listMean(Coef4List),3)
 (Intercept)          L0          A0          L1          A1
-     -3.766      -1.630       1.978       1.536       1.513
+     -3.704      -1.604       1.875       1.506       1.506
 > round(listMean(Coef5List),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -3.871      -1.652       1.916       1.528       1.536      -1.023
+     -3.856      -1.610       1.908       1.511       1.529      -1.012
 > round(listMean(Coef6List),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -4.191      -1.631       1.946       1.533       1.601      -1.040
+     -4.078      -1.632       1.917       1.483       1.536      -0.998
          A2       A1:A2
-      1.350       1.068
+      1.243       1.186
 
 ```
 
@@ -421,7 +421,7 @@ data with missing observations.
 +                                      data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSG),3)
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
-Est.      -0.007 6.009 3.996 5.002     0 -2.004 -1.005        0
+Est.       -0.01 5.997 4.011 5.008     0 -1.997 -1.006        0
 >
 > estimationSG.NA<-
 + lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
@@ -429,8 +429,7 @@ Est.      -0.007 6.009 3.996 5.002     0 -2.004 -1.005        0
 +                                      data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSG.NA),3)
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
-Est.      -0.249 6.443 3.555 5.743     0 -2.551 -0.782        0
->
+Est.      -0.255 6.442 3.583 5.743     0 -2.551 -0.793        0
 
 ```
 
@@ -443,8 +442,8 @@ The use of the *g.dr.dicho* function on data. It applies only for data with miss
 +                                         covariates=c("L0","A0","L1","A1","L2","A2"),
 +                                         regList=regList)$coef)
 > round(listMean(estimationMis.SG),3)
-     (Intercept)    A0 A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
-Est.      -0.016 6.015  4 5.015     0 -2.004 -1.004        0
+     (Intercept)    A0    A1    A2 A0*A1  A0*A2 A1*A2 A0*A1*A2
+Est.      -0.021 5.996 4.015 5.014     0 -1.998 -1.01        0
 
 ```
 
@@ -454,6 +453,8 @@ data with missing observations.
 ## The use of the two functions  *seq.mediator* and  *seq.dr.mediator*
 The use of the *seq.mediator* function on data. It applies both for full data and
 data with missing observations.
+
+The estimation is with full data
 ```markdown
 > estimationSeqM.A0<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
@@ -462,7 +463,7 @@ data with missing observations.
 +                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A0),3)
       dir indir_M1 indir_M2 overall
-Est 3.016    0.985    2.008   6.009
+Est 3.006    0.993    1.998   5.997
 >
 > estimationSeqM.A1<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
@@ -470,8 +471,8 @@ Est 3.016    0.985    2.008   6.009
 +                                           int="A1",
 +                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A1),3)
-      dir indir_M1 overall
-Est 1.994    2.002   3.996
+    dir indir_M1 overall
+Est   2    2.011   4.011
 >
 > estimationSeqM.A2<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
@@ -480,9 +481,12 @@ Est 1.994    2.002   3.996
 +                                           data=DataSetFull[[iiii]])$coef)
 > round(listMean(estimationSeqM.A2),3)
       dir overall
-Est 5.002   5.002
->
->
+Est 5.008   5.008
+
+```
+
+The estimation is with observed data with missing observations
+```markdown
 > estimationSeqM.A0.NA<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
 +                                           exposure=c("A0","A1","A2"),
@@ -490,7 +494,7 @@ Est 5.002   5.002
 +                                           data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSeqM.A0.NA),3)
       dir indir_M1 indir_M2 overall
-Est 3.015     1.81    1.618   6.443
+Est 3.001    1.812    1.629   6.442
 >
 > estimationSeqM.A1.NA<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
@@ -499,7 +503,7 @@ Est 3.015     1.81    1.618   6.443
 +                                           data=DataSetMonotone[[iiii]])$coef)
 > round(listMean(estimationSeqM.A1.NA),3)
       dir indir_M1 overall
-Est 1.995     1.56   3.555
+Est 1.998    1.585   3.583
 >
 > estimationSeqM.A2.NA<-
 + lapply(1:loop,function(iiii) seq.mediator(mmodels=c(model1,model2,model3),
@@ -522,7 +526,7 @@ The use of the *seq.dr.mediator* function on data. It applies only for data with
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A0),3)
       dir indir_M1 indir_M2 overall
-Est 3.015    0.986    2.014   6.015
+Est 3.001    0.993    2.003   5.996
 >
 > estimationMis.SeqM.A1<-
 + lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
@@ -533,7 +537,7 @@ Est 3.015    0.986    2.014   6.015
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A1),3)
       dir indir_M1 overall
-Est 1.995    2.005       4
+Est 1.998    2.017   4.015
 >
 > estimationMis.SeqM.A2<-
 + lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
@@ -544,7 +548,7 @@ Est 1.995    2.005       4
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A2),3)
       dir overall
-Est 5.015   5.015
+Est 5.014   5.014
 
 ```
 ## The use of the two functions *monotone.pattern*
@@ -561,11 +565,9 @@ The *monotone.pattern* will helps to transform the pattern from nonmonotone to m
 +                         threshold=0.05))
 >
 > listMean(lapply(1:loop,function(iiii)length(DataSetnonMonotone.extra[[iiii]]$transformnb)))
-[1] 926.57
+[1] 926.56
 > listMean(lapply(1:loop,function(iiii)length(DataSetnonMonotone.extra[[iiii]]$transformnb)))/NN
-[1] 0.463285
->
->
+[1] 0.46328
 >
 > regList
 [[1]]
@@ -626,55 +628,55 @@ The *monotone.pattern* will helps to transform the pattern from nonmonotone to m
 >
 > round(listMean(DataSetCount),3)
 
-      1       2       3       4       5       6     Inf     Sum
- 218.21  213.16  178.90  125.52  252.93  153.14  858.14 2000.00
+       1        2        3        4        5        6      Inf      Sum
+ 217.175  214.555  179.400  125.990  252.965  154.050  855.865 2000.000
 > round(listMean(DataSetCount.e),3)
 
-      1       2       3       4       5       6     Inf     Sum
- 219.23  209.57  144.07  110.98  107.89   39.24  217.84 1048.82
+       1        2        3        4        5        6      Inf      Sum
+ 218.695  209.905  143.335  111.545  108.670   39.395  217.630 1049.175
 >
 >
 > round(listMean(Coef1List),3)
 (Intercept)          L0
-     -3.181      -1.887
+     -3.211      -1.916
 > round(listMean(Coef2List),3)
 (Intercept)          L0          A0
-     -3.556      -1.716       1.940
+     -3.534      -1.720       1.921
 > round(listMean(Coef3List),3)
 (Intercept)          L0          A0          L1
-     -3.130      -1.915       1.918       1.518
+     -3.100      -1.901       1.900       1.503
 > round(listMean(Coef4List),3)
 (Intercept)          L0          A0          L1          A1
-     -3.766      -1.630       1.978       1.536       1.513
+     -3.704      -1.604       1.875       1.506       1.506
 > round(listMean(Coef5List),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -3.871      -1.652       1.916       1.528       1.536      -1.023
+     -3.856      -1.610       1.908       1.511       1.529      -1.012
 > round(listMean(Coef6List),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -4.191      -1.631       1.946       1.533       1.601      -1.040
+     -4.078      -1.632       1.917       1.483       1.536      -0.998
          A2       A1:A2
-      1.350       1.068
+      1.243       1.186
 >
 > round(listMean(Coef1List.e),3)
 (Intercept)          L0
-     -2.335      -1.527
+     -2.345      -1.540
 > round(listMean(Coef2List.e),3)
 (Intercept)          L0          A0
-     -2.298      -1.335       1.365
+     -2.285      -1.336       1.356
 > round(listMean(Coef3List.e),3)
 (Intercept)          L0          A0          L1
-     -2.032      -1.460       1.520       1.188
+     -2.026      -1.458       1.528       1.161
 > round(listMean(Coef4List.e),3)
 (Intercept)          L0          A0          L1          A1
-     -2.301      -1.271       1.453       0.842       1.317
+     -2.260      -1.246       1.353       0.823       1.323
 > round(listMean(Coef5List.e),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -2.960      -1.581       1.801       1.500       1.510      -0.921
+     -3.002      -1.527       1.762       1.497       1.550      -0.939
 > round(listMean(Coef6List.e),3)
 (Intercept)          L0          A0          L1          A1          L2
-     -4.808      -1.818       2.063       1.748       2.516      -1.104
+     -4.634      -1.713       1.950       1.631       2.349      -1.049
          A2
-      1.946
+      1.910
 
 ```
 
@@ -701,7 +703,7 @@ Est.      -0.013 5.992 3.982 5.006     0 -1.984 -1.002        0
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A0.e),3)
       dir indir_M1 indir_M2 overall
-Est 3.024    0.982    1.987   5.992
+Est 3.015    0.991    2.014   6.021
 >
 > estimationMis.SeqM.A1.e<-
 + lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
@@ -711,8 +713,8 @@ Est 3.024    0.982    1.987   5.992
 +                                              covariates=c("L0","A0","L1","A1","L2","A2"),
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A1.e),3)
-     dir indir_M1 overall
-Est 1.98    2.002   3.982
+      dir indir_M1 overall
+Est 1.982    2.023   4.006
 >
 > estimationMis.SeqM.A2.e<-
 + lapply(1:loop,function(iiii) seq.dr.mediator(mmodels=c(model1,model2,model3),
@@ -723,7 +725,7 @@ Est 1.98    2.002   3.982
 +                                              regList=regList)$coef)
 > round(listMean(estimationMis.SeqM.A2.e),3)
       dir overall
-Est 5.006   5.006
+Est 5.005   5.005
 
 ```
 
