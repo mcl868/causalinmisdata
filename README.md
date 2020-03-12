@@ -293,6 +293,18 @@ Simulate data with three exposure in the presence of time-dependent confounding 
 > rm("iiii")
 
 ```
+The causal effects in the marginal structural model are given by:
+<li>The intercept is none.
+<li>The causal effect of the exposure at time 0 is 6.
+<li>The causal effect of the exposure at time 1 is 4.
+<li>The causal effect of the exposure at time 2 is 5.
+<li>The causal effect of the interaction between the two exposures at time 0 and time 1 is none.
+<li>The causal effect of the interaction between the two exposures at time 0 and time 2 is -2.
+<li>The causal effect of the interaction between the two exposures at time 1 and time 2 is -1.
+<li>The causal effect of the interaction between all three exposures at time 0, 1 and 2 is none.
+<br>
+<br>
+
 Simulate the monotone missing pattern in the data.
 ```markdown
 > DataSetListNA<-list()
@@ -404,10 +416,8 @@ Define the models for the analysis.
 (Intercept)          L0          A0          L1          A1          L2
      -3.856      -1.610       1.908       1.511       1.529      -1.012
 > round(listMean(Coef6List),3)
-(Intercept)          L0          A0          L1          A1          L2
-     -4.078      -1.632       1.917       1.483       1.536      -0.998
-         A2       A1:A2
-      1.243       1.186
+(Intercept)          L0          A0          L1          A1          L2         A2       A1:A2
+     -4.078      -1.632       1.917       1.483       1.536      -0.998      1.243       1.186
 
 ```
 
@@ -423,6 +433,13 @@ data with missing observations.
      (Intercept)    A0    A1    A2 A0*A1  A0*A2  A1*A2 A0*A1*A2
 Est.       -0.01 5.997 4.011 5.008     0 -1.997 -1.006        0
 >
+
+```
+Rewrite *?g.dicho* in R for further information.<br>
+The next example show how the missing observations in data cause the estimates to
+be biased.
+The *g.dicho*-function works only with complete cases.
+```markdown
 > estimationSG.NA<-
 + lapply(1:loop,function(iiii) g.dicho(mmodels=c(model1,model2,model3),
 +                                      exposure=c("A0","A1","A2"),
@@ -652,10 +669,8 @@ The *monotone.pattern* will helps to transform the pattern from nonmonotone to m
 (Intercept)          L0          A0          L1          A1          L2
      -3.856      -1.610       1.908       1.511       1.529      -1.012
 > round(listMean(Coef6List),3)
-(Intercept)          L0          A0          L1          A1          L2
-     -4.078      -1.632       1.917       1.483       1.536      -0.998
-         A2       A1:A2
-      1.243       1.186
+(Intercept)          L0          A0          L1          A1          L2         A2       A1:A2
+     -4.078      -1.632       1.917       1.483       1.536      -0.998      1.243       1.186
 >
 > round(listMean(Coef1List.e),3)
 (Intercept)          L0
@@ -673,10 +688,8 @@ The *monotone.pattern* will helps to transform the pattern from nonmonotone to m
 (Intercept)          L0          A0          L1          A1          L2
      -3.002      -1.527       1.762       1.497       1.550      -0.939
 > round(listMean(Coef6List.e),3)
-(Intercept)          L0          A0          L1          A1          L2
-     -4.634      -1.713       1.950       1.631       2.349      -1.049
-         A2
-      1.910
+(Intercept)          L0          A0          L1          A1          L2         A2
+     -4.634      -1.713       1.950       1.631       2.349      -1.049      1.910
 
 ```
 
