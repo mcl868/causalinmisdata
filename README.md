@@ -294,16 +294,14 @@ Simulate data with three exposure in the presence of time-dependent confounding 
 
 ```
 The causal effects in the marginal structural model are given by:
-<li>The intercept is none.
-<li>The causal effect of the exposure at time 0 is 6.
-<li>The causal effect of the exposure at time 1 is 4.
-<li>The causal effect of the exposure at time 2 is 5.
-<li>The causal effect of the interaction between the two exposures at time 0 and time 1 is none.
-<li>The causal effect of the interaction between the two exposures at time 0 and time 2 is -2.
-<li>The causal effect of the interaction between the two exposures at time 1 and time 2 is -1.
-<li>The causal effect of the interaction between all three exposures at time 0, 1 and 2 is none.
-<br>
-<br>
+- The intercept is none.
+- The causal effect of the exposure at time 0 is 6.
+- The causal effect of the exposure at time 1 is 4.
+- The causal effect of the exposure at time 2 is 5.
+- The causal effect of the interaction between the two exposures at time 0 and time 1 is none.
+- The causal effect of the interaction between the two exposures at time 0 and time 2 is -2.
+- The causal effect of the interaction between the two exposures at time 1 and time 2 is -1.
+- The causal effect of the interaction between all three exposures at time 0, 1 and 2 is none.
 
 Simulate the monotone missing pattern in the data.
 ```markdown
@@ -360,6 +358,7 @@ Simulate the nonmonotone missing pattern in the data.
 
 ```
 
+## *The analysis*
 ## The models for the analysis
 Define the models for the analysis.
 ```markdown
