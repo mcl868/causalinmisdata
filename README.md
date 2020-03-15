@@ -359,7 +359,7 @@ Simulate the nonmonotone missing pattern in the data.
 ```
 
 ## *The analysis*
-## The models for the analysis
+### The models for the analysis
 Define the models for the analysis.
 ```markdown
 > regList<-list()
@@ -376,7 +376,7 @@ Define the models for the analysis.
 
 ```
 
-## The use of the two functions  *missing.pattern* and *prob.of.missing*
+### The use of the two functions  *missing.pattern* and *prob.of.missing*
 ```markdown
 > DataSetCount<-Coef1List<-Coef2List<-Coef3List<-Coef4List<-Coef5List<-Coef6List<-list()
 > for(iiii in 1:loop){
@@ -420,7 +420,7 @@ Define the models for the analysis.
 
 ```
 
-## The use of the two functions  *g.dicho* and  *g.dr.dicho*
+### The use of the two functions  *g.dicho* and  *g.dr.dicho*
 The use of the *g.dicho* function on data. It applies both for full data and
 data with missing observations.
 ```markdown
@@ -466,7 +466,7 @@ Est.      -0.021 5.996 4.015 5.014     0 -1.998 -1.01        0
 Use the *g.dicho* function on data. It applies both for full data and
 data with missing observations.
 
-## The use of the two functions  *seq.mediator* and  *seq.dr.mediator*
+### The use of the two functions  *seq.mediator* and  *seq.dr.mediator*
 The use of the *seq.mediator* function on data. It applies both for full data and
 data with missing observations.
 
@@ -567,7 +567,7 @@ Est 1.998    2.017   4.015
 Est 5.014   5.014
 
 ```
-## The use of the two functions *monotone.pattern*
+### The use of the two functions *monotone.pattern*
 In case of the data have missing observations following a nonmonotone and you want to make a
 sensitive analysis.
 The *monotone.pattern* will helps to transform the pattern from nonmonotone to monotone.
