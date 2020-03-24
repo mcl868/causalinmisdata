@@ -1,2 +1,3 @@
 combiexpo<-function(expo, ...){
-  sapply(1:length(expo), function(i)paste0(expo[i],collapse="*"))}
+  expo<-matrix(expo)
+  sapply(1:ncol(expo), function(i)paste0(expo[,i],collapse="*"))}
