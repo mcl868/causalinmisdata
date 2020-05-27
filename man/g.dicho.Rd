@@ -54,7 +54,7 @@ The sample size of complete cases of data. In case of no missing values NCC is e
 put references to the literature/web site here
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~

@@ -63,7 +63,7 @@ The data by the name "DataSetnonMonotone" contain the data with missing observat
 put references to the literature/web site here
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~
@@ -96,8 +96,8 @@ model1 <- Y ~ L0 + A0 + L1 + A1 + L2 + A2 + L2*A2
 model2 <- model1 ~ A1 + L1 + A0 + L0
 model3 <- model2 ~ A0 + L0 + A0*L0
 
-g.aipw.dicho(mmodels=c(model1,model2,model3), 
-             exposure=c("A0","A1","A2"), 
+g.aipw.dicho(mmodels=c(model1,model2,model3),
+             exposure=c("A0","A1","A2"),
              data=DataSet)
 }
 

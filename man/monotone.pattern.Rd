@@ -78,7 +78,7 @@ pattern. (If \code{transform}=FALSE)
 \references{
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~

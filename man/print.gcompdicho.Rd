@@ -37,7 +37,7 @@ For further arguments for the \code{print}-function.
 %% ~put references to the literature/web site here ~
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~

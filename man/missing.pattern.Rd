@@ -50,7 +50,7 @@ Tsiatis, Anastasios A., A. A. (2006). Semiparametric theory and missing data. Sp
 Springer.
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~

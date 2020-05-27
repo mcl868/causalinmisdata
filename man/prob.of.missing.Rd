@@ -8,7 +8,7 @@ Estimate the probabilities for stopping observering additional vaiables
 
 }
 \usage{
-prob.of.missing(object, regression, list.out = TRUE, completecase = FALSE, regList, order = NULL, ...) 
+prob.of.missing(object, regression, list.out = TRUE, completecase = FALSE, regList, order = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -44,7 +44,7 @@ prob.of.missing(object, regression, list.out = TRUE, completecase = FALSE, regLi
 \references{
 }
 \author{
-Thomas Maltesen
+Thomas Maltesen \email{thomas.maltesen@protonmail.com}
 }
 \note{
 %%  ~~further notes~~
@@ -83,8 +83,8 @@ for(iiii in 1:loop){
 
 listMean(DataSetCount)
 
-      1       2       3       4       5       6     Inf     Sum 
- 218.21  213.16  178.90  125.52  252.93  153.14  858.14 2000.00 
+      1       2       3       4       5       6     Inf     Sum
+ 218.21  213.16  178.90  125.52  252.93  153.14  858.14 2000.00
 
 round(listMean(Coef1List),3)
 (Intercept)          L0
