@@ -3,7 +3,7 @@ Type: Package
 Title: Causal inference in missing data
 Version: 0.1.0
 Author: Thomas Maltesen
-Maintainer: Thomas Maltesen <mcl868@alumni.ku.dk>
+Maintainer: Thomas Maltesen <thomas.maltesen@proton.me>
 Description: Analysing data with missing observations.
 Imports: HelpPackage, gtools, combinat
 Remotes: mcl868/HelpPackage
